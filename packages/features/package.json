@@ -1,0 +1,32 @@
+{
+  "name": "@ogcapi-js/features",
+  "version": "0.0.0",
+  "description": "a javascript library for OGC API - Features",
+  "author": "Haoliang Yu <haoliang.yu@outlook.com>",
+  "homepage": "https://github.com/haoliangyu/ogcapi-js#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "src/types.d.ts",
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haoliangyu/ogcapi-js.git"
+  },
+  "scripts": {
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint"
+  },
+  "bugs": {
+    "url": "https://github.com/haoliangyu/ogcapi-js/issues"
+  },
+  "dependencies": {
+    "@types/geojson": "^7946.0.7"
+  }
+}
