@@ -121,7 +121,7 @@ export interface IGetFeaturesParameters {
   /**
    * feature datetime range
    */
-  datetime?: string[];
+  datetime?: Date | IDateRange;
 }
 
 /**
@@ -162,4 +162,19 @@ export interface IGetFeatureParameters {
    * feature id
    */
   featureId: string;
+}
+
+/**
+ * datetime range
+ */
+export interface IDateRange {
+  /**
+   * start of range
+   */
+  start?: Date,
+
+  /**
+   * end of range
+   */
+  end?: Date
 }

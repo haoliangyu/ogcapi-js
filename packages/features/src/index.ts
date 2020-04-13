@@ -7,6 +7,8 @@ import {
   IGetFeaturesResponse,
   IGetFeatureParameters
 } from './types';
+import { stringify as stringifyBbox } from './utils/bbox';
+import { stringify as stringifyDatetime } from './utils/datetime';
 import request, { requestParams } from './request';
 
 /**
@@ -66,14 +68,15 @@ export class Service {
     const collectionId = params.collectionId;
     const requestParams: requestParams = {};
 
-    if ('bbox' in params) {
-      requestParams.bbox = params.bbox;
+    if (params.bbox) {
+      requestParams.bbox = stringifyBbox(params.bbox);
     }
 
-    if ('datetime' in params) {
-      requestParams.datetime = params.datetime;
+    if (params.datetime) {
+      requestParams.datetime = stringifyDatetime(params.datetime);
     }
 
+    // should take care of 0
     if ('limit' in params) {
       requestParams.limit = params.limit;
     }
