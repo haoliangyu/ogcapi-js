@@ -5,17 +5,16 @@ import {
   IGetConformanceResponse,
   IGetFeaturesParameters,
   IGetFeaturesResponse,
-  IGetFeatureParameters
+  IGetFeatureParameters,
 } from './types';
 import { stringify as stringifyBbox } from './utils/bbox';
 import { stringify as stringifyDatetime } from './utils/datetime';
-import request, { requestParams } from './request';
+import request, { IRequestParams } from './request';
 
 /**
  *
  */
 export class Service {
-
   /**
    *
    */
@@ -25,14 +24,14 @@ export class Service {
    *
    * @param baseUrl
    */
-  constructor (baseUrl: string) {
+  constructor(baseUrl: string) {
     this.baseUrl = baseUrl;
   }
 
   /**
    *
    */
-  async getConformance (): Promise<string[]> {
+  async getConformance(): Promise<string[]> {
     const url: string = `${this.baseUrl}/conformance`;
     const res: Response = await request(url);
     const result: IGetConformanceResponse = await res.json();
@@ -42,7 +41,7 @@ export class Service {
   /**
    *
    */
-  async getCollections (): Promise<ICollection[]> {
+  async getCollections(): Promise<ICollection[]> {
     const url: string = `${this.baseUrl}/collections`;
     const res: Response = await request(url);
     const result: IGetCollectionsResponse = await res.json();
@@ -53,7 +52,7 @@ export class Service {
    *
    * @param collectionId
    */
-  async getCollection (collectionId: string): Promise<ICollection> {
+  async getCollection(collectionId: string): Promise<ICollection> {
     const url: string = `${this.baseUrl}/collections/${collectionId}`;
     const res: Response = await request(url);
     const result: ICollection = await res.json();
@@ -64,9 +63,11 @@ export class Service {
    * get features from a collection
    * @param params
    */
-  async getFeatures(params: IGetFeaturesParameters): Promise<IGetFeaturesResponse> {
+  async getFeatures(
+    params: IGetFeaturesParameters
+  ): Promise<IGetFeaturesResponse> {
     const collectionId = params.collectionId;
-    const requestParams: requestParams = {};
+    const requestParams: IRequestParams = {};
 
     if (params.bbox) {
       requestParams.bbox = stringifyBbox(params.bbox);

@@ -30,9 +30,7 @@ export interface ICollection {
   links: ILink[];
 }
 
-export interface IFeatures extends FeatureCollection {
-
-}
+export interface IFeatures extends FeatureCollection {}
 
 /**
  * collection feature
@@ -171,10 +169,10 @@ export interface IDateRange {
   /**
    * start of range
    */
-  start?: Date,
+  start?: Date;
 
   /**
    * end of range
    */
-  end?: Date
+  end?: Date;
 }

@@ -1,6 +1,6 @@
 import { IDateRange } from '../types';
 
-export function isValid (value: Date | IDateRange): boolean {
+export function isValid(value: Date | IDateRange): boolean {
   if (value instanceof Date) {
     return true;
   }
@@ -13,9 +13,9 @@ export function isValid (value: Date | IDateRange): boolean {
   return false;
 }
 
-export function stringify (value: Date | IDateRange): string {
+export function stringify(value: Date | IDateRange): string {
   if (!isValid(value)) {
-    throw new Error('invalid datetime')
+    throw new Error('invalid datetime');
   }
 
   if (value instanceof Date) {
