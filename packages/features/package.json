@@ -21,7 +21,8 @@
   "scripts": {
     "build": "tsdx build",
     "test": "tsdx test",
-    "lint": "tsdx lint"
+    "lint": "tsdx lint",
+    "lint:fix": "tsdx lint --fix"
   },
   "bugs": {
     "url": "https://github.com/haoliangyu/ogcapi-js/issues"
