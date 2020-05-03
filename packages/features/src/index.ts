@@ -33,8 +33,7 @@ export class Service {
    */
   async getConformance(): Promise<string[]> {
     const url: string = `${this.baseUrl}/conformance`;
-    const res: Response = await request(url);
-    const result: IGetConformanceResponse = await res.json();
+    const result: IGetConformanceResponse = await request(url);
     return result.conformsTo;
   }
 
@@ -43,8 +42,7 @@ export class Service {
    */
   async getCollections(): Promise<ICollection[]> {
     const url: string = `${this.baseUrl}/collections`;
-    const res: Response = await request(url);
-    const result: IGetCollectionsResponse = await res.json();
+    const result: IGetCollectionsResponse = await request(url);
     return result.collections;
   }
 
@@ -54,8 +52,7 @@ export class Service {
    */
   async getCollection(collectionId: string): Promise<ICollection> {
     const url: string = `${this.baseUrl}/collections/${collectionId}`;
-    const res: Response = await request(url);
-    const result: ICollection = await res.json();
+    const result: ICollection = await request(url);
     return result;
   }
 
@@ -83,8 +80,7 @@ export class Service {
     }
 
     const url: string = `${this.baseUrl}/collections/${collectionId}/items`;
-    const res: Response = await request(url, requestParams);
-    const result: IGetFeaturesResponse = await res.json();
+    const result: IGetFeaturesResponse = await request(url, requestParams);
     return result;
   }
 
@@ -95,8 +91,7 @@ export class Service {
   async getFeature(params: IGetFeatureParameters): Promise<IFeature> {
     const { collectionId, featureId } = params;
     const url: string = `${this.baseUrl}/collections/${collectionId}/items/${featureId}`;
-    const res: Response = await request(url);
-    const result: IFeature = await res.json();
+    const result: IFeature = await request(url);
     return result;
   }
 }

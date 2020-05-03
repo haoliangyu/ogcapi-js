@@ -1,3 +1,5 @@
+import fetch from 'cross-fetch';
+
 /**
  * send get request
  * @param url
