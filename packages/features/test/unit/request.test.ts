@@ -3,7 +3,7 @@ import mockRequest from '../mock-request';
 
 test('request() should send a GET request with f=json', async () => {
   mockRequest('https://www.example.com?f=json', {
-    success: true
+    success: true,
   });
 
   const result = await request('https://www.example.com');
@@ -23,13 +23,13 @@ test('request() should throw the request error', async () => {
 
 test('request() should accept additional parameters', async () => {
   mockRequest('https://www.example.com?f=json&test=true&num=1&content=test', {
-    success: true
+    success: true,
   });
 
   const result = await request('https://www.example.com', {
     test: true,
     num: 1,
-    content: 'test'
+    content: 'test',
   });
   expect(result.success).toBe(true);
 });

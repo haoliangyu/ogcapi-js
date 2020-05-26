@@ -5,7 +5,7 @@ import {
   IGetConformanceResponse,
   IGetFeaturesOptions,
   IGetFeaturesResponse,
-  IGetFeatureOptions
+  IGetFeatureOptions,
 } from './types';
 import { stringify as stringifyBbox } from './utils/bbox';
 import { stringify as stringifyDatetime } from './utils/datetime';
@@ -18,14 +18,13 @@ export interface IServiceConfig {
   /**
    * service base url
    */
-  baseUrl: string
+  baseUrl: string;
 }
 
 /**
  * OGC Features API service class
  */
 export class Service {
-
   _baseUrl: string;
 
   /**
@@ -33,7 +32,7 @@ export class Service {
    */
   constructor(config: IServiceConfig) {
     if (!isUrl(config.baseUrl)) {
-      throw new Error('invalid base url')
+      throw new Error('invalid base url');
     }
 
     this._baseUrl = config.baseUrl;
@@ -99,14 +98,18 @@ export class Service {
    * get a feature from a collection
    * @param params
    */
-  async getFeature(collectionId: string, featureId: string, options: IGetFeatureOptions = {}): Promise<IFeature> {
+  async getFeature(
+    collectionId: string,
+    featureId: string,
+    options: IGetFeatureOptions = {}
+  ): Promise<IFeature> {
     const url: string = `${this._baseUrl}/collections/${collectionId}/items/${featureId}`;
     const result: IFeature = await request(url, options.params);
     return result;
   }
 }
 
-function isUrl (value: string): boolean {
+function isUrl(value: string): boolean {
   try {
     new URL(value);
     return true;

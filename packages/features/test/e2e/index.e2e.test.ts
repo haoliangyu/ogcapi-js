@@ -1,7 +1,7 @@
-require('isomorphic-fetch');
-
 import { Service } from '../../src';
 import { ICollection } from '../../src/types';
+
+require('isomorphic-fetch');
 
 const TEST_SITE = 'https://www.ldproxy.nrw.de/topographie';
 
@@ -42,7 +42,10 @@ test('e2e: getFeatures() should return a GeoJSON feature collection', async () =
 
 test('e2e: getFeature() should return a GeoJSON feature', async () => {
   const service = new Service({ baseUrl: TEST_SITE });
-  const result = await service.getFeature('ax_bahnverkehrsanlage', 'DENWAT01D000Abbi');
+  const result = await service.getFeature(
+    'ax_bahnverkehrsanlage',
+    'DENWAT01D000Abbi'
+  );
 
   expect(result.type).toBe('Feature');
   expect(result.geometry).toBeTruthy();
