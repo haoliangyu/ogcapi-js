@@ -21,6 +21,8 @@
   "scripts": {
     "build": "tsdx build",
     "test": "tsdx test",
+    "test:e2e": "tsdx test test/e2e",
+    "test:unit": "tsdx test test/unit",
     "lint": "tsdx lint",
     "lint:fix": "tsdx lint --fix"
   },
@@ -28,7 +30,10 @@
     "url": "https://github.com/haoliangyu/ogcapi-js/issues"
   },
   "dependencies": {
-    "@types/geojson": "^7946.0.7",
-    "cross-fetch": "^3.0.4"
+    "@types/geojson": "^7946.0.7"
+  },
+  "devDependencies": {
+    "fetch-mock": "^9.10.1",
+    "isomorphic-fetch": "^2.2.1"
   }
 }

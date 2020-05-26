@@ -1,5 +1,3 @@
-import fetch from 'cross-fetch';
-
 /**
  * send get request
  * @param url
@@ -22,6 +20,10 @@ export default async function request(
   const res: Response = await fetch(requestUrl.href, {
     method: 'GET',
   });
+
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
 
   return res.json();
 }

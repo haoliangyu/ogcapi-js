@@ -1,4 +1,5 @@
 import { FeatureCollection, Feature } from 'geojson';
+import { IRequestParams } from './request';
 
 /**
  * collection metadata
@@ -100,12 +101,7 @@ export interface IGetCollectionsResponse {
 /**
  * request parameters to get features from a collection
  */
-export interface IGetFeaturesParameters {
-  /**
-   * collection id
-   */
-  collectionId: string;
-
+export interface IGetFeaturesOptions {
   /**
    * number of features to return
    */
@@ -120,6 +116,11 @@ export interface IGetFeaturesParameters {
    * feature datetime range
    */
   datetime?: Date | IDateRange;
+
+  /**
+   * additional request parameters
+   */
+  params?: IRequestParams;
 }
 
 /**
@@ -150,16 +151,11 @@ export interface IGetFeaturesResponse extends IFeatures {
 /**
  * request parameters to get a feature from a collection
  */
-export interface IGetFeatureParameters {
+export interface IGetFeatureOptions {
   /**
-   * collection id
+   * additional request parameters
    */
-  collectionId: string;
-
-  /**
-   * feature id
-   */
-  featureId: string;
+  params?: IRequestParams;
 }
 
 /**
