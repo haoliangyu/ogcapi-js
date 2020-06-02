@@ -24,7 +24,8 @@
     "test:e2e": "tsdx test test/e2e",
     "test:unit": "tsdx test test/unit",
     "lint": "tsdx lint",
-    "lint:fix": "tsdx lint --fix"
+    "lint:fix": "tsdx lint --fix",
+    "lint:staged": "lint-staged"
   },
   "bugs": {
     "url": "https://github.com/haoliangyu/ogcapi-js/issues"
@@ -34,6 +35,10 @@
   },
   "devDependencies": {
     "fetch-mock": "^9.10.1",
-    "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1",
+    "lint-staged": "^10.2.7"
+  },
+  "lint-staged": {
+    "*.js": "tsdx lint --fix"
   }
 }
