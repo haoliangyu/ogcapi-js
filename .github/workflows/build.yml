@@ -34,6 +34,7 @@ jobs:
     - name: npm install and test
       run: | 
         npm i -g lerna
+        npm i -g tsdx
         npm run bootstrap
         npm test
         npm build
