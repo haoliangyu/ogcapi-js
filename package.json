@@ -2,6 +2,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "test": "lerna run test",
     "lint": "lerna run lint",
@@ -22,12 +23,12 @@
   "name": "ogcapi-js",
   "author": "Haoliang Yu",
   "devDependencies": {
-    "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.4",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.9",
     "husky": "^4.2.5",
-    "lerna": "^2.8.0",
+    "lerna": "^3.22.0",
     "tsdx": "^0.13.2",
-    "tslib": "^1.11.1",
-    "typescript": "^3.8.3"
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.3"
   }
 }
