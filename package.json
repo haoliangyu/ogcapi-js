@@ -1,10 +1,6 @@
 {
-  "version": "0.1.0",
+  "version": "0.0.0",
   "license": "MIT",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "lerna run build",
     "test": "lerna run test",

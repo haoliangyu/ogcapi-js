@@ -6,13 +6,13 @@
   "homepage": "https://github.com/haoliangyu/ogcapi-js#readme",
   "license": "MIT",
   "main": "dist/index.js",
-  "typings": "src/types.d.ts",
   "directories": {
     "lib": "src",
     "test": "test"
   },
+  "typings": "dist/index.d.ts",
   "files": [
-    "src"
+    "dist"
   ],
   "repository": {
     "type": "git",
