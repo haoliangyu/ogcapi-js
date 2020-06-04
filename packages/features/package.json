@@ -34,9 +34,14 @@
     "@types/geojson": "^7946.0.7"
   },
   "devDependencies": {
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.10",
     "fetch-mock": "^9.10.1",
     "isomorphic-fetch": "^2.2.1",
-    "lint-staged": "^10.2.7"
+    "lint-staged": "^10.2.7",
+    "tsdx": "^0.13.2",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.5"
   },
   "lint-staged": {
     "*.js": "tsdx lint --fix"
