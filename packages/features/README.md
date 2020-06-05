@@ -2,6 +2,12 @@
 
 A lightweight JavaScript client library for [OGCAPI - Features](https://github.com/opengeospatial/ogcapi-features).
 
+## Installation
+
+```
+npm install @ogcapi-js/features
+```
+
 ## Usage
 
 ### Node.js

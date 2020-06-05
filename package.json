@@ -4,6 +4,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
+    "build:doc": "typedoc",
     "test": "lerna run test",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint:fix",
@@ -23,7 +24,10 @@
   "name": "ogcapi-js",
   "author": "Haoliang Yu",
   "devDependencies": {
+    "@strictsoftware/typedoc-plugin-monorepo": "^0.3.1",
     "husky": "^4.2.5",
-    "lerna": "^3.22.0"
+    "lerna": "^3.22.0",
+    "typedoc": "^0.17.7",
+    "typescript": "^3.9.5"
   }
 }
