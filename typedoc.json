@@ -5,7 +5,8 @@
   "theme": "default",
   "ignoreCompilerErrors": "false",
   "preserveConstEnums": "true",
-  "exclude": "*.test.ts",
+  "exclude": "packages/**/test/**/*.ts",
   "external-modulemap": ".*packages\/([^\/]+)",
-  "stripInternal": "false"
+  "stripInternal": "false",
+  "excludeNotExported": true
 }
