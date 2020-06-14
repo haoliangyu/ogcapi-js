@@ -3,10 +3,13 @@
   "mode": "modules",
   "out": "doc",
   "theme": "default",
-  "ignoreCompilerErrors": "false",
-  "preserveConstEnums": "true",
-  "exclude": "packages/**/test/**/*.ts",
-  "external-modulemap": ".*packages\/([^\/]+)",
+  "ignoreCompilerErrors": false,
+  "preserveConstEnums": true,
+  "external-modulemap": ".*packages\/([^\/]+)\/.*",
   "stripInternal": "false",
-  "excludeNotExported": true
+  "excludeNotExported": true,
+  "excludePrivate": true,
+  "exclude": [
+    "packages/**/test/**/*.ts"
+  ]
 }

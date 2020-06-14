@@ -32,9 +32,10 @@ jobs:
 
     # Runs a single command using the runners shell
     - name: npm install and test
-      run: | 
+      run: |
         npm i -g lerna
         npm i -g tsdx
         npm run bootstrap
         npm test
         npm build
+        npm run build:doc

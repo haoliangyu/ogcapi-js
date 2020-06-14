@@ -1,4 +1,4 @@
-export function isValid(bbox: number[]): boolean {
+export function isValidBbox(bbox: number[]): boolean {
   if (!Array.isArray(bbox)) {
     return false;
   }
@@ -11,8 +11,8 @@ export function isValid(bbox: number[]): boolean {
   return true;
 }
 
-export function stringify(bbox: number[]): string {
-  if (!isValid(bbox)) {
+export function stringifyBbox(bbox: number[]): string {
+  if (!isValidBbox(bbox)) {
     throw new Error('invalid bbox');
   }
 

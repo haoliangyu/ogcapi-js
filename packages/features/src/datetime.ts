@@ -1,6 +1,19 @@
-import { IDateRange } from '../types';
+/**
+ * datetime range
+ */
+export interface IDateRange {
+  /**
+   * start of range
+   */
+  start?: Date;
 
-export function isValid(value: Date | IDateRange): boolean {
+  /**
+   * end of range
+   */
+  end?: Date;
+}
+
+export function isValidDatetime(value: Date | IDateRange): boolean {
   if (value instanceof Date) {
     return true;
   }
@@ -13,8 +26,8 @@ export function isValid(value: Date | IDateRange): boolean {
   return false;
 }
 
-export function stringify(value: Date | IDateRange): string {
-  if (!isValid(value)) {
+export function stringifyDatetime(value: Date | IDateRange): string {
+  if (!isValidDatetime(value)) {
     throw new Error('invalid datetime');
   }
 

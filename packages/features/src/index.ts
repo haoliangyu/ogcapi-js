@@ -1,15 +1,7 @@
-import {
-  ICollection,
-  IFeature,
-  IGetCollectionsResponse,
-  IGetConformanceResponse,
-  IGetFeaturesOptions,
-  IGetFeaturesResponse,
-  IGetFeatureOptions,
-} from './types';
-import { stringify as stringifyBbox } from './utils/bbox';
-import { stringify as stringifyDatetime } from './utils/datetime';
+import { stringifyBbox } from './bbox';
+import { stringifyDatetime, IDateRange } from './datetime';
 import request, { IRequestParams } from './request';
+import { FeatureCollection, Feature } from 'geojson';
 
 /**
  * configuration for a OGC Features API service
@@ -25,7 +17,7 @@ export interface IServiceConfig {
  * OGC Features API service class
  */
 export class Service {
-  _baseUrl: string;
+  private _baseUrl: string;
 
   /**
    * constructor
@@ -39,36 +31,40 @@ export class Service {
   }
 
   /**
-   *
+   * Get a list of conformed standards
+   * @param options       options
    */
-  async getConformance(): Promise<IGetConformanceResponse> {
+  async getConformance(options: IRequestOptions = {}): Promise<IGetConformanceResponse> {
     const url: string = `${this._baseUrl}/conformance`;
-    const result: IGetConformanceResponse = await request(url);
+    const result: IGetConformanceResponse = await request(url, options.params);
     return result;
   }
 
   /**
-   *
+   * Get a list of feature collections
+   * @param options       options
    */
-  async getCollections(): Promise<IGetCollectionsResponse> {
+  async getCollections(options: IRequestOptions = {}): Promise<IGetCollectionsResponse> {
     const url: string = `${this._baseUrl}/collections`;
-    const result: IGetCollectionsResponse = await request(url);
+    const result: IGetCollectionsResponse = await request(url, options.params);
     return result;
   }
 
   /**
-   *
-   * @param collectionId
+   * Get a feature coolection by id
+   * @param collectionId collection id
+   * @param options       options
    */
-  async getCollection(collectionId: string): Promise<ICollection> {
+  async getCollection(collectionId: string, options: IRequestOptions = {}): Promise<ICollection> {
     const url: string = `${this._baseUrl}/collections/${collectionId}`;
-    const result: ICollection = await request(url);
+    const result: ICollection = await request(url, options.params);
     return result;
   }
 
   /**
-   * get features from a collection
-   * @param params
+   * Get features from a collection by id
+   * @param collectionId  collection id
+   * @param options       options
    */
   async getFeatures(
     collectionId: string,
@@ -95,13 +91,15 @@ export class Service {
   }
 
   /**
-   * get a feature from a collection
-   * @param params
+   * Get a feature from a collection by id
+   * @param collectionId  collection id
+   * @param featureId     feature id
+   * @param options       options
    */
   async getFeature(
     collectionId: string,
     featureId: string,
-    options: IGetFeatureOptions = {}
+    options: IRequestOptions = {}
   ): Promise<IFeature> {
     const url: string = `${this._baseUrl}/collections/${collectionId}/items/${featureId}`;
     const result: IFeature = await request(url, options.params);
@@ -116,4 +114,156 @@ function isUrl(value: string): boolean {
   } catch (error) {
     return false;
   }
+}
+
+/**
+ * request options
+ */
+export interface IRequestOptions {
+  /**
+   * additional request parameters
+   */
+  params?: IRequestParams;
+}
+
+/**
+ * collection metadata
+ */
+export interface ICollection {
+  /**
+   * identifier of the collection used, for example, in URIs
+   */
+  id: string;
+
+  /**
+   * human readable title of the collection
+   */
+  title?: string;
+
+  /**
+   * a description of the features in the collection
+   */
+  description?: string;
+
+  /**
+   * indicator about the type of the items in the collection (the default value is 'feature')
+   */
+  itemType?: string;
+
+  /**
+   * links
+   */
+  links: ILink[];
+}
+
+export interface IFeatures extends FeatureCollection { }
+
+/**
+ * collection feature
+ */
+export interface IFeature extends Feature {
+  /**
+   * feature id
+   */
+  id: string;
+
+  /**
+   * links
+   */
+  links: ILink[];
+}
+
+/**
+ * link
+ */
+export interface ILink {
+  /**
+   * link href
+   */
+  href: string;
+
+  /**
+   * link ref
+   */
+  rel: string;
+
+  /**
+   * link type
+   */
+  type: string;
+
+  /**
+   * link title
+   */
+  title: string;
+}
+
+/**
+ * response for the get conformance request
+ */
+export interface IGetConformanceResponse {
+  /**
+   * conform array
+   */
+  conformsTo: string[];
+}
+
+/**
+ * response for the get collections request
+ */
+export interface IGetCollectionsResponse {
+  /**
+   * collections
+   */
+  collections: ICollection[];
+
+  /**
+   * links
+   */
+  links: ILink[];
+}
+
+/**
+ * request parameters to get features from a collection
+ */
+export interface IGetFeaturesOptions extends IRequestOptions {
+  /**
+   * number of features to return
+   */
+  limit?: number;
+
+  /**
+   * feature bounding box
+   */
+  bbox?: number[];
+
+  /**
+   * feature datetime range
+   */
+  datetime?: Date | IDateRange;
+}
+
+/**
+ * request response for get features request
+ */
+export interface IGetFeaturesResponse extends IFeatures {
+  /**
+   * links
+   */
+  links: ILink[];
+
+  /**
+   * response time
+   */
+  timeStamp: string;
+
+  /**
+   * number of features matched the request query
+   */
+  numberMatched: number;
+
+  /**
+   * number of features returned
+   */
+  numberReturned: number;
 }
