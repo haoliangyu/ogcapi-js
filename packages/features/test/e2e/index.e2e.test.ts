@@ -1,5 +1,4 @@
-import { Service } from '../../src/service';
-import { ICollection } from '../../src/types';
+import { Service, ICollection } from '../../src/index';
 
 require('isomorphic-fetch');
 
