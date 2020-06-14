@@ -20,6 +20,11 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+
     # Runs a single command using the runners shell
     - name: Build doc
       run: |
@@ -27,6 +32,7 @@ jobs:
         npm i -g tsdx
         npm i -g typedoc
         npm i -g @strictsoftware/typedoc-plugin-monorepo
+        npm i -g typescript
         npm run bootstrap
         npm run build:doc
 
