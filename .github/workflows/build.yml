@@ -35,6 +35,8 @@ jobs:
       run: |
         npm i -g lerna
         npm i -g tsdx
+        npm i -g typedoc
+        npm i -g @strictsoftware/typedoc-plugin-monorepo
         npm run bootstrap
         npm test
         npm build
