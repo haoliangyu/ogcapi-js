@@ -1,5 +1,5 @@
 import { stringifyBbox } from './bbox';
-import { stringifyDatetime, IDateRange } from './datetime';
+import { stringifyDatetime, IDateRange  } from './datetime';
 import request, { IRequestParams } from './request';
 import { FeatureCollection, Feature } from 'geojson';
 

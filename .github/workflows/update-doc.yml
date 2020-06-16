@@ -33,6 +33,7 @@ jobs:
         npm i -g typedoc
         npm i -g @strictsoftware/typedoc-plugin-monorepo
         npm i -g typescript
+        npm i
         npm run bootstrap
         npm run build:doc
 
