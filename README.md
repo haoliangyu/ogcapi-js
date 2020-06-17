@@ -6,6 +6,8 @@ A lightweight and modular JavaScript library for [OGC APIs](https://ogcapi.ogc.o
 
 * [Features](https://github.com/opengeospatial/ogcapi-features) - [@ogcapi-js/features](./packages/features)
 
+See more details at the [documentation](https://haoliangyu.github.io/ogcapi-js)
+
 This library is designed to work in both Node.js and browser environments.
 
 ## License
