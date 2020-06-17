@@ -24,6 +24,7 @@
   "name": "ogcapi-js",
   "author": "Haoliang Yu",
   "devDependencies": {
+    "@lerna/version": "^3.22.1",
     "@strictsoftware/typedoc-plugin-monorepo": "^0.3.1",
     "husky": "^4.2.5",
     "lerna": "^3.22.0",
