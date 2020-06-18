@@ -1,6 +1,6 @@
 {
   "name": "@ogcapi-js/features",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a javascript library for OGC API - Features",
   "author": "Haoliang Yu <haoliang.yu@outlook.com>",
   "homepage": "https://github.com/haoliangyu/ogcapi-js#readme",
