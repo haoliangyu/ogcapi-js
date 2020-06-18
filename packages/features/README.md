@@ -1,5 +1,7 @@
 # @ogcapi-js/features
 
+[![npm](https://img.shields.io/npm/v/@ogcapi-js/features)](https://www.npmjs.com/package/@ogcapi-js/features)
+
 A lightweight JavaScript client library for [OGCAPI - Features](https://github.com/opengeospatial/ogcapi-features).
 
 This library works with endpoints defined at:
