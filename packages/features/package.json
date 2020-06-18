@@ -45,5 +45,8 @@
   },
   "lint-staged": {
     "*.js": "tsdx lint --fix"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
