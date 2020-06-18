@@ -5,7 +5,7 @@ A lightweight JavaScript client library for [OGCAPI - Features](https://github.c
 This library works with endpoints defined at:
 * [OGC API - Features - Part 1: Core](http://docs.opengeospatial.org/DRAFTS/17-069r2.html)
 
-See more details at the [documentation](https://haoliangyu.github.io/ogcapi-js)
+See more details at the [documentation](https://haoliangyu.github.io/ogcapi-js).
 
 ## Installation
 
