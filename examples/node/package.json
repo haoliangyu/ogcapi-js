@@ -1,0 +1,15 @@
+{
+  "name": "ogcapi-node-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Haoliang Yu",
+  "license": "ISC",
+  "dependencies": {
+    "@ogcapi-js/features": "^0.1.2",
+    "isomorphic-fetch": "^2.2.1"
+  }
+}
