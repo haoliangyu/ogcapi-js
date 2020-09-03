@@ -83,13 +83,13 @@
 					<h3>Node.js</h3>
 				</a>
 				<p>This library uses the global <a href="https://fetch.spec.whatwg.org/">fetch</a> function for HTTP requests. Please consider using <a href="https://www.npmjs.com/package/isomorphic-fetch">isomorphic-fetch</a> for polyfill.</p>
-				<pre><code class="language-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">'isomorphic-fetch'</span>);
+				<pre><code class="language-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;isomorphic-fetch&#x27;</span>);
 
-<span class="hljs-keyword">const</span> { Service } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@ogcapi-js/features'</span>);
+<span class="hljs-keyword">const</span> { Service } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;@ogcapi-js/features&#x27;</span>);
 
 <span class="hljs-comment">// create a new service client</span>
 <span class="hljs-keyword">const</span> service = <span class="hljs-keyword">new</span> Service({
-  <span class="hljs-attr">baseUrl</span>: <span class="hljs-string">'https://ogcapi.service.com'</span>
+  <span class="hljs-attr">baseUrl</span>: <span class="hljs-string">&#x27;https://ogcapi.service.com&#x27;</span>
 });
 
 <span class="hljs-comment">// get all collections from the service</span>
@@ -102,7 +102,7 @@
 
 <span class="hljs-comment">// create a new service client</span>
 <span class="hljs-keyword">const</span> service = <span class="hljs-keyword">new</span> Service({
-  <span class="hljs-attr">baseUrl</span>: <span class="hljs-string">'https://ogcapi.service.com'</span>
+  <span class="hljs-attr">baseUrl</span>: <span class="hljs-string">&#x27;https://ogcapi.service.com&#x27;</span>
 });
 
 <span class="hljs-comment">// get all collections from the service</span>
@@ -152,6 +152,5 @@
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
