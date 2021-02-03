@@ -4,7 +4,7 @@
 
 A lightweight and modular JavaScript library for [OGC APIs](https://ogcapi.ogc.org/) that implements:
 
-* [Features API](./packages/features)
+* [@ogcapi-js/features](./packages/features)
 
 Compared to writing the request code yourself, this library provides:
 
