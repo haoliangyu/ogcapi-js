@@ -1,0 +1,25 @@
+name: deploy
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '15.x'
+    - name: install dependencies
+      run: npm install && npm run bootstrap
+    - name: build
+      run: npm run build:doc
+    - name: deploy doc
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ secrets.DOC_DEPLOY_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: doc
