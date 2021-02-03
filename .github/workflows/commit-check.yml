@@ -17,7 +17,7 @@ jobs:
       with:
         node-version: '15.x'
     - name: install dependencies
-      run: npm install && npm run bootstrap
+      run: npm install
     - name: build
       run: npm build
     - name: test
