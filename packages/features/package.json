@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "tsdx build",
-    "test": "npm run test:unit && npm run test:e2e",
+    "test": "npm run test:unit",
     "test:e2e": "tsdx test test/e2e",
     "test:unit": "tsdx test test/unit",
     "lint": "tsdx lint",
