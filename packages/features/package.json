@@ -10,7 +10,7 @@
     "lib": "src",
     "test": "test"
   },
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],

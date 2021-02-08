@@ -74,6 +74,10 @@ export class Service {
 
     if (options.bbox) {
       requestParams.bbox = stringifyBbox(options.bbox);
+
+      if (options.bboxCrs) {
+        requestParams['bbox_crs'] = options.bboxCrs;
+      }
     }
 
     if (options.datetime) {
@@ -99,10 +103,16 @@ export class Service {
   async getFeature(
     collectionId: string,
     featureId: string,
-    options: IRequestOptions = {}
+    options: IGetFeatureOptions = {}
   ): Promise<IFeature> {
     const url: string = `${this._baseUrl}/collections/${collectionId}/items/${featureId}`;
-    const result: IFeature = await request(url, options.params);
+    const requestParams: IRequestParams = Object.assign({}, options.params);
+
+    if (options.crs) {
+      requestParams.crs = options.crs;
+    }
+
+    const result: IFeature = await request(url, requestParams);
     return result;
   }
 }
@@ -154,6 +164,21 @@ export interface ICollection {
    * links
    */
   links: ILink[];
+
+  /**
+   * the list of CRS identifiers supported by the service
+   */
+  crs?: string[];
+
+  /**
+   * the CRS identifier, from the list of supported CRS identifiers, that may be used to retrieve features from a collection without the need to apply a CRS transformation
+   */
+  storageCrs?: string;
+
+  /**
+   * point in time at which coordinates in the spatial feature collection are referenced to the dynamic coordinate reference system in `storageCrs`, that may be used to retrieve features from a collection without the need to apply a change of coordinate epoch. It is expressed as a decimal year in the Gregorian calendar
+   */
+  storageCrsCoordinateEpoch?: number;
 }
 
 export interface IFeatures extends FeatureCollection { }
@@ -221,6 +246,11 @@ export interface IGetCollectionsResponse {
    * links
    */
   links: ILink[];
+
+  /**
+   * a global list of CRS identifiers that are supported by spatial feature collections offered by the service
+   */
+  crs: string[];
 }
 
 /**
@@ -238,9 +268,19 @@ export interface IGetFeaturesOptions extends IRequestOptions {
   bbox?: number[];
 
   /**
+   * the CRS used for the coordinate values of the bbox parameter
+   */
+  bboxCrs?: string,
+
+  /**
    * feature datetime range
    */
   datetime?: Date | IDateRange;
+
+  /**
+   * return CRS for the requested features
+   */
+  crs?: string;
 }
 
 /**
@@ -266,4 +306,11 @@ export interface IGetFeaturesResponse extends IFeatures {
    * number of features returned
    */
   numberReturned: number;
+}
+
+export interface IGetFeatureOptions extends IRequestOptions {
+  /**
+   * return CRS for the requested feature
+   */
+  crs?: string;
 }
