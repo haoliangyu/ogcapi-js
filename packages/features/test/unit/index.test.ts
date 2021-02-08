@@ -46,7 +46,7 @@ test('getCollection() should return a collection', async function() {
 
 test('getFeatures() should fetch features with parameters', async function() {
   mockRequest(
-    'https://service.com/collections/test/items?f=json&bbox=1%252C2%252C3%252C4&limit=1',
+    'https://service.com/collections/test/items?f=json&bbox=1%252C2%252C3%252C4&bbox_crs=test&limit=1',
     {
       type: 'FeatureCollection',
       features: [],
@@ -58,6 +58,7 @@ test('getFeatures() should fetch features with parameters', async function() {
   });
   const result = await service.getFeatures('test', {
     bbox: [1, 2, 3, 4],
+    bboxCrs: 'test',
     limit: 1,
   });
   expect(result).toEqual({
@@ -76,6 +77,24 @@ test('getFeature() should fetch a feature', async function() {
     baseUrl: 'https://service.com',
   });
   const result = await service.getFeature('test', 'a');
+  expect(result).toEqual({
+    type: 'Feature',
+    geometry: {},
+  });
+});
+
+test('getFeature() should fetch a feature with parameters', async function () {
+  mockRequest('https://service.com/collections/test/items/a?f=json&crs=test', {
+    type: 'Feature',
+    geometry: {},
+  });
+
+  const service = new Service({
+    baseUrl: 'https://service.com',
+  });
+  const result = await service.getFeature('test', 'a', {
+    crs: 'test'
+  });
   expect(result).toEqual({
     type: 'Feature',
     geometry: {},
