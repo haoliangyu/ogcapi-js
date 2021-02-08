@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IRequestParams | ogcapi-js</title>
+	<title>IGetFeatureOptions | ogcapi-js</title>
 	<meta name="description" content="Documentation for ogcapi-js">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -57,10 +57,10 @@
 					<a href="../modules/features.html">features</a>
 				</li>
 				<li>
-					<a href="features.irequestparams.html">IRequestParams</a>
+					<a href="features.igetfeatureoptions.html">IGetFeatureOptions</a>
 				</li>
 			</ul>
-			<h1>Interface IRequestParams</h1>
+			<h1>Interface IGetFeatureOptions</h1>
 		</div>
 	</div>
 </header>
@@ -71,13 +71,62 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IRequestParams</span>
+						<a href="features.irequestoptions.html" class="tsd-signature-type">IRequestOptions</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">IGetFeatureOptions</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
-			<section class="tsd-panel tsd-kind-interface tsd-parent-kind-module">
-				<h3 class="tsd-before-signature">Indexable</h3>
-				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="features.igetfeatureoptions.html#crs" class="tsd-kind-icon">crs</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="features.igetfeatureoptions.html#params" class="tsd-kind-icon">params</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="crs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> crs</h3>
+					<div class="tsd-signature tsd-kind-icon">crs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/862638a/packages/features/src/index.ts#L315">packages/features/src/index.ts:315</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>return CRS for the requested feature</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="params" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> params</h3>
+					<div class="tsd-signature tsd-kind-icon">params<span class="tsd-signature-symbol">:</span> <a href="features.irequestparams.html" class="tsd-signature-type">IRequestParams</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="features.irequestoptions.html">IRequestOptions</a>.<a href="features.irequestoptions.html#params">params</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/862638a/packages/features/src/index.ts#L136">packages/features/src/index.ts:136</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>additional request parameters</p>
+						</div>
+					</div>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -119,8 +168,16 @@
 							<li class=" tsd-kind-interface tsd-parent-kind-module">
 								<a href="features.igetconformanceresponse.html" class="tsd-kind-icon">IGet<wbr>Conformance<wbr>Response</a>
 							</li>
-							<li class=" tsd-kind-interface tsd-parent-kind-module">
+							<li class="current tsd-kind-interface tsd-parent-kind-module">
 								<a href="features.igetfeatureoptions.html" class="tsd-kind-icon">IGet<wbr>Feature<wbr>Options</a>
+								<ul>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="features.igetfeatureoptions.html#crs" class="tsd-kind-icon">crs</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+										<a href="features.igetfeatureoptions.html#params" class="tsd-kind-icon">params</a>
+									</li>
+								</ul>
 							</li>
 							<li class=" tsd-kind-interface tsd-parent-kind-module">
 								<a href="features.igetfeaturesoptions.html" class="tsd-kind-icon">IGet<wbr>Features<wbr>Options</a>
@@ -134,7 +191,7 @@
 							<li class=" tsd-kind-interface tsd-parent-kind-module">
 								<a href="features.irequestoptions.html" class="tsd-kind-icon">IRequest<wbr>Options</a>
 							</li>
-							<li class="current tsd-kind-interface tsd-parent-kind-module">
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
 								<a href="features.irequestparams.html" class="tsd-kind-icon">IRequest<wbr>Params</a>
 							</li>
 							<li class=" tsd-kind-interface tsd-parent-kind-module">
@@ -171,6 +228,7 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>

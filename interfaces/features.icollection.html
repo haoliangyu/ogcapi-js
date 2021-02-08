@@ -89,10 +89,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="features.icollection.html#crs" class="tsd-kind-icon">crs</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="features.icollection.html#description" class="tsd-kind-icon">description</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="features.icollection.html#id" class="tsd-kind-icon">id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="features.icollection.html#itemtype" class="tsd-kind-icon">item<wbr>Type</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="features.icollection.html#links" class="tsd-kind-icon">links</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="features.icollection.html#storagecrs" class="tsd-kind-icon">storage<wbr>Crs</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="features.icollection.html#storagecrscoordinateepoch" class="tsd-kind-icon">storage<wbr>Crs<wbr>Coordinate<wbr>Epoch</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="features.icollection.html#title" class="tsd-kind-icon">title</a></li>
 							</ul>
 						</section>
@@ -102,12 +105,27 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="crs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> crs</h3>
+					<div class="tsd-signature tsd-kind-icon">crs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/862638a/packages/features/src/index.ts#L171">packages/features/src/index.ts:171</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>the list of CRS identifiers supported by the service</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="description" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> description</h3>
 					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/69f0c26/packages/features/src/index.ts#L146">packages/features/src/index.ts:146</a></li>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/862638a/packages/features/src/index.ts#L156">packages/features/src/index.ts:156</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -122,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/69f0c26/packages/features/src/index.ts#L136">packages/features/src/index.ts:136</a></li>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/862638a/packages/features/src/index.ts#L146">packages/features/src/index.ts:146</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -137,7 +155,7 @@
 					<div class="tsd-signature tsd-kind-icon">item<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/69f0c26/packages/features/src/index.ts#L151">packages/features/src/index.ts:151</a></li>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/862638a/packages/features/src/index.ts#L161">packages/features/src/index.ts:161</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -152,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">links<span class="tsd-signature-symbol">:</span> <a href="features.ilink.html" class="tsd-signature-type">ILink</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/69f0c26/packages/features/src/index.ts#L156">packages/features/src/index.ts:156</a></li>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/862638a/packages/features/src/index.ts#L166">packages/features/src/index.ts:166</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -162,12 +180,42 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="storagecrs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> storage<wbr>Crs</h3>
+					<div class="tsd-signature tsd-kind-icon">storage<wbr>Crs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/862638a/packages/features/src/index.ts#L176">packages/features/src/index.ts:176</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>the CRS identifier, from the list of supported CRS identifiers, that may be used to retrieve features from a collection without the need to apply a CRS transformation</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="storagecrscoordinateepoch" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> storage<wbr>Crs<wbr>Coordinate<wbr>Epoch</h3>
+					<div class="tsd-signature tsd-kind-icon">storage<wbr>Crs<wbr>Coordinate<wbr>Epoch<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/862638a/packages/features/src/index.ts#L181">packages/features/src/index.ts:181</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>point in time at which coordinates in the spatial feature collection are referenced to the dynamic coordinate reference system in <code>storageCrs</code>, that may be used to retrieve features from a collection without the need to apply a change of coordinate epoch. It is expressed as a decimal year in the Gregorian calendar</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="title" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> title</h3>
 					<div class="tsd-signature tsd-kind-icon">title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/69f0c26/packages/features/src/index.ts#L141">packages/features/src/index.ts:141</a></li>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/862638a/packages/features/src/index.ts#L151">packages/features/src/index.ts:151</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -203,6 +251,9 @@
 								<a href="features.icollection.html" class="tsd-kind-icon">ICollection</a>
 								<ul>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="features.icollection.html#crs" class="tsd-kind-icon">crs</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="features.icollection.html#description" class="tsd-kind-icon">description</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -213,6 +264,12 @@
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="features.icollection.html#links" class="tsd-kind-icon">links</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="features.icollection.html#storagecrs" class="tsd-kind-icon">storage<wbr>Crs</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="features.icollection.html#storagecrscoordinateepoch" class="tsd-kind-icon">storage<wbr>Crs<wbr>Coordinate<wbr>Epoch</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="features.icollection.html#title" class="tsd-kind-icon">title</a>
@@ -233,6 +290,9 @@
 							</li>
 							<li class=" tsd-kind-interface tsd-parent-kind-module">
 								<a href="features.igetconformanceresponse.html" class="tsd-kind-icon">IGet<wbr>Conformance<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="features.igetfeatureoptions.html" class="tsd-kind-icon">IGet<wbr>Feature<wbr>Options</a>
 							</li>
 							<li class=" tsd-kind-interface tsd-parent-kind-module">
 								<a href="features.igetfeaturesoptions.html" class="tsd-kind-icon">IGet<wbr>Features<wbr>Options</a>
