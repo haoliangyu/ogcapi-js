@@ -1,6 +1,6 @@
 {
   "name": "@ogcapi-js/features",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "a javascript library for OGC API - Features",
   "author": "Haoliang Yu <haoliang.yu@outlook.com>",
   "homepage": "https://github.com/haoliangyu/ogcapi-js#readme",
@@ -34,14 +34,14 @@
     "@types/geojson": "^7946.0.7"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.13",
-    "@types/node": "^14.6.3",
-    "fetch-mock": "^9.10.7",
-    "isomorphic-fetch": "^2.2.1",
-    "lint-staged": "^10.3.0",
-    "tsdx": "^0.13.3",
-    "tslib": "^2.0.1",
-    "typescript": "^4.0.2"
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.25",
+    "fetch-mock": "^9.11.0",
+    "isomorphic-fetch": "^3.0.0",
+    "lint-staged": "^10.5.4",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.1.0",
+    "typescript": "^4.1.3"
   },
   "lint-staged": {
     "*.js": "tsdx lint --fix"
