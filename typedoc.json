@@ -1,15 +1,9 @@
 {
   "name": "ogcapi-js",
-  "mode": "modules",
   "out": "doc",
   "theme": "default",
-  "ignoreCompilerErrors": false,
-  "preserveConstEnums": true,
-  "external-modulemap": ".*packages\/([^\/]+)\/.*",
-  "stripInternal": "false",
-  "excludeNotExported": true,
-  "excludePrivate": true,
   "exclude": [
     "packages/**/test/**/*.ts"
-  ]
+  ],
+  "excludeExternals": false
 }

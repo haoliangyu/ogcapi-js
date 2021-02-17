@@ -5,7 +5,7 @@
     "ncu": "node scripts/ncu.js",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "build:doc": "typedoc",
+    "build:doc": "typedoc packages/features/src/index.ts",
     "test": "lerna run test",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint:fix",
@@ -26,7 +26,6 @@
   "author": "Haoliang Yu",
   "devDependencies": {
     "@lerna/version": "^3.22.1",
-    "@strictsoftware/typedoc-plugin-monorepo": "^0.3.1",
     "husky": "^4.3.8",
     "lerna": "^3.22.1",
     "npm-check-updates": "^11.1.1",
