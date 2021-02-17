@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for ogcapi-js">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -49,11 +50,6 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
 			<h1>ogcapi-js</h1>
 		</div>
 	</div>
@@ -76,7 +72,7 @@
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
-				<pre><code><span class="hljs-built_in">npm</span> install @ogcapi-js/features
+				<pre><code><span style="color: #001080">npm</span><span style="color: #000000"> </span><span style="color: #001080">install</span><span style="color: #000000"> @</span><span style="color: #001080">ogcapi</span><span style="color: #000000">-</span><span style="color: #001080">js</span><span style="color: #000000">/</span><span style="color: #001080">features</span>
 </code></pre>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
@@ -85,49 +81,79 @@
 					<h3>Node.js</h3>
 				</a>
 				<p>This library uses the global <a href="https://fetch.spec.whatwg.org/">fetch</a> function for HTTP requests. Please consider using <a href="https://www.npmjs.com/package/isomorphic-fetch">isomorphic-fetch</a> for polyfill.</p>
-				<pre><code class="language-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;isomorphic-fetch&#x27;</span>);
+				<pre><code class="language-javascript"><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;isomorphic-fetch&#039;</span><span style="color: #000000">);</span>
 
-<span class="hljs-keyword">const</span> { Service } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;@ogcapi-js/features&#x27;</span>);
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">Service</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@ogcapi-js/features&#039;</span><span style="color: #000000">);</span>
 
-<span class="hljs-comment">// create a new service client</span>
-<span class="hljs-keyword">const</span> service = <span class="hljs-keyword">new</span> Service({
-  <span class="hljs-attr">baseUrl</span>: <span class="hljs-string">&#x27;https://ogcapi.service.com&#x27;</span>
-});
+<span style="color: #008000">// create a new service client</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">service</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Service</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">baseUrl:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;https://ogcapi.service.com&#039;</span>
+<span style="color: #000000">});</span>
 
-<span class="hljs-comment">// get all collections from the service</span>
-<span class="hljs-keyword">const</span> collections = <span class="hljs-keyword">await</span> services.getCollections();
+<span style="color: #008000">// get all collections from the service</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">collections</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">services</span><span style="color: #000000">.</span><span style="color: #795E26">getCollections</span><span style="color: #000000">();</span>
 </code></pre>
 				<a href="#browser" id="browser" style="color: inherit; text-decoration: none;">
 					<h3>Browser</h3>
 				</a>
 				<p>Modern browsers already support the global <code>fetch</code> function so there is no need to polyfill.</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { Service } <span class="hljs-keyword">from</span> <span class="hljs-string">`@ogcapi-js/features`</span>;
+				<pre><code class="language-javascript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Service</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">`@ogcapi-js/features`</span><span style="color: #000000">;</span>
 
-<span class="hljs-comment">// create a new service client</span>
-<span class="hljs-keyword">const</span> service = <span class="hljs-keyword">new</span> Service({
-  <span class="hljs-attr">baseUrl</span>: <span class="hljs-string">&#x27;https://ogcapi.service.com&#x27;</span>
-});
+<span style="color: #008000">// create a new service client</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">service</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Service</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">baseUrl:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;https://ogcapi.service.com&#039;</span>
+<span style="color: #000000">});</span>
 
-<span class="hljs-comment">// get all collections from the service</span>
-<span class="hljs-keyword">const</span> collections = <span class="hljs-keyword">await</span> services.getCollections();
+<span style="color: #008000">// get all collections from the service</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">collections</span><span style="color: #000000"> = </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">services</span><span style="color: #000000">.</span><span style="color: #795E26">getCollections</span><span style="color: #000000">();</span>
 </code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/features.html">features</a>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-module">
-						<a href="modules/features.html" class="tsd-kind-icon">features</a>
+					<li class=" tsd-kind-class">
+						<a href="classes/service.html" class="tsd-kind-icon">Service</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icollection.html" class="tsd-kind-icon">ICollection</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ifeature.html" class="tsd-kind-icon">IFeature</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ifeatures.html" class="tsd-kind-icon">IFeatures</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/igetcollectionsresponse.html" class="tsd-kind-icon">IGet<wbr>Collections<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/igetconformanceresponse.html" class="tsd-kind-icon">IGet<wbr>Conformance<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/igetfeatureoptions.html" class="tsd-kind-icon">IGet<wbr>Feature<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/igetfeaturesoptions.html" class="tsd-kind-icon">IGet<wbr>Features<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/igetfeaturesresponse.html" class="tsd-kind-icon">IGet<wbr>Features<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ilink.html" class="tsd-kind-icon">ILink</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/irequestoptions.html" class="tsd-kind-icon">IRequest<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iserviceconfig.html" class="tsd-kind-icon">IService<wbr>Config</a>
 					</li>
 				</ul>
 			</nav>
@@ -139,14 +165,14 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 			</ul>
 		</div>
 	</div>
