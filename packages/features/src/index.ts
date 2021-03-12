@@ -23,10 +23,6 @@ export class Service {
    * constructor
    */
   constructor(config: IServiceConfig) {
-    if (!isUrl(config.baseUrl)) {
-      throw new Error('invalid base url');
-    }
-
     this._baseUrl = config.baseUrl;
   }
 
@@ -114,15 +110,6 @@ export class Service {
 
     const result: IFeature = await request(url, requestParams);
     return result;
-  }
-}
-
-function isUrl(value: string): boolean {
-  try {
-    new URL(value);
-    return true;
-  } catch (error) {
-    return false;
   }
 }
 
