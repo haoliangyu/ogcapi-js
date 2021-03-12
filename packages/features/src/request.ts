@@ -7,17 +7,17 @@ export default async function request(
   url: string,
   params: IRequestParams = {}
 ): Promise<any> {
-  const requestUrl = new URL(url);
-  requestUrl.searchParams.set('f', 'json');
+  const searchParams = new URLSearchParams();
+  searchParams.append('f', 'json');
 
   for (const key in params) {
-    requestUrl.searchParams.set(
+    searchParams.append(
       key,
       encodeURIComponent(params[key].toString())
     );
   }
 
-  const res: Response = await fetch(requestUrl.href, {
+  const res: Response = await fetch(`${url}?${searchParams.toString()}`, {
     method: 'GET',
   });
 

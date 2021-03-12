@@ -1,12 +1,6 @@
 import { Service } from '../../src/index';
 import mockRequest from '../mock-request';
 
-test('it should throw an error for bad base url', async function() {
-  expect(() => {
-    new Service({ baseUrl: 'dsfsdf' });
-  }).toThrowError();
-});
-
 test('getConformance() should return a list of conformances', async function() {
   mockRequest('https://service.com/conformance?f=json', {
     conformsTo: ['test'],
@@ -100,3 +94,21 @@ test('getFeature() should fetch a feature with parameters', async function () {
     geometry: {},
   });
 });
+
+test('it could use a relative path for a local service', async function () {
+  mockRequest('/my-service/collections/test/items/a?f=json&crs=test', {
+    type: 'Feature',
+    geometry: {},
+  });
+
+  const service = new Service({
+    baseUrl: '/my-service',
+  });
+  const result = await service.getFeature('test', 'a', {
+    crs: 'test'
+  });
+  expect(result).toEqual({
+    type: 'Feature',
+    geometry: {},
+  });
+})
