@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.3 - 2021-03-17
+
+### Fixed
+* Double encoding for request parameters ([#14](https://github.com/haoliangyu/ogcapi-js/pull/14))
+
 ## 0.2.2 - 2021-03-12
 
 ### Changed
