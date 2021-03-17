@@ -13,7 +13,7 @@ export default async function request(
   for (const key in params) {
     searchParams.append(
       key,
-      encodeURIComponent(params[key].toString())
+      params[key].toString()
     );
   }
 

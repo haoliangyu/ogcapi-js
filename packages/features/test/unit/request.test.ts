@@ -33,3 +33,14 @@ test('request() should accept additional parameters', async () => {
   });
   expect(result.success).toBe(true);
 });
+
+test('request() should accept date formatted parameter', async () => {
+  mockRequest('https://www.example.com?f=json&datetime=2014-01-01T00%3A00%3A00.000Z%2F2014-01-02T00%3A00%3A00.000Z', {
+    success: true,
+  });
+
+  const result = await request('https://www.example.com', {
+    datetime: '2014-01-01T00:00:00.000Z/2014-01-02T00:00:00.000Z',
+  });
+  expect(result.success).toBe(true);
+});
