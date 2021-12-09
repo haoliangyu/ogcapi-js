@@ -15,10 +15,10 @@ jobs:
     - name: setup node
       uses: actions/setup-node@v1
       with:
-        node-version: '15.x'
+        node-version: '16.x'
     - name: install dependencies
       run: npm install
     - name: build
-      run: npm build
+      run: npm run build
     - name: test
       run: npm test
