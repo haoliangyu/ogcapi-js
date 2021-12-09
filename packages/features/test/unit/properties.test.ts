@@ -5,7 +5,6 @@ test('isValidProperties() should return true for valid input', () => {
   expect(isValidProperties(['PROPERTY_A', 'PROPERTY_B'])).toBe(true);
 });
 
-
 test('isValidProperties() should return false for invalid input', () => {
   expect(isValidProperties('')).toBe(false);
   expect(isValidProperties([])).toBe(false);
