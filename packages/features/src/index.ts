@@ -1,5 +1,6 @@
 import { stringifyBbox } from './bbox';
 import { stringifyDatetime, IDateRange  } from './datetime';
+import { stringifyProperties } from './properties';
 import request, { IRequestParams } from './request';
 import { FeatureCollection, Feature } from 'geojson';
 
@@ -74,6 +75,10 @@ export class Service {
       if (options.bboxCrs) {
         requestParams['bbox_crs'] = options.bboxCrs;
       }
+    }
+
+    if (options.properties) {
+      requestParams.properties = stringifyProperties(options.properties);
     }
 
     if (options.datetime) {
@@ -268,6 +273,11 @@ export interface IGetFeaturesOptions extends IRequestOptions {
    * return CRS for the requested features
    */
   crs?: string;
+
+  /**
+   * properties to include for the requested features
+   */
+  properties?: string | string[];
 }
 
 /**
