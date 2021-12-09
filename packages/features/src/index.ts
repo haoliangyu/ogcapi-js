@@ -275,7 +275,7 @@ export interface IGetFeaturesOptions extends IRequestOptions {
   crs?: string;
 
   /**
-   * properties to include for the requested features.
+   * properties to include for the requested features
    */
   properties?: string[] | string;
 }
