@@ -1,4 +1,4 @@
-export function isValidProperties(properties: string[] | string): boolean {
+export function isValidProperties(properties: string | string[]): boolean {
   if (!Array.isArray(properties) && typeof properties !== 'string') {
     return false;
   }
@@ -11,7 +11,7 @@ export function isValidProperties(properties: string[] | string): boolean {
   return true;
 }
 
-export function stringifyProperties(properties: string[] | string): string {
+export function stringifyProperties(properties: string | string[]): string {
   if (!isValidProperties(properties)) {
     throw new Error('invalid properties');
   }

@@ -277,7 +277,7 @@ export interface IGetFeaturesOptions extends IRequestOptions {
   /**
    * properties to include for the requested features
    */
-  properties?: string[] | string;
+  properties?: string | string[];
 }
 
 /**
