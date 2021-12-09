@@ -17,10 +17,10 @@ test('stringifyProperties() should throw an error for valid input', () => {
   expect(() => stringifyProperties([])).toThrow('invalid properties');
 });
 
-test('isValidProperties() should return the passed string for string input', () => {
+test('stringifyProperties() should return the passed string for string input', () => {
   expect(stringifyProperties('PROPERTY_A')).toBe('PROPERTY_A');
 });
 
-test('isValidProperties() should return a comma seperated properties string for array input', () => {
+test('stringifyProperties() should return a comma seperated properties string for array input', () => {
   expect(stringifyProperties(['PROPERTY_A', 'PROPERTY_B'])).toBe('PROPERTY_A,PROPERTY_B');
 });
