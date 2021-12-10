@@ -5,6 +5,10 @@ import { stringifySortBy, TSortBy } from './sortby';
 import request, { IRequestParams } from './request';
 import { FeatureCollection, Feature } from 'geojson';
 
+// re-export types and interfaces for better user compatibility
+export { IDateRange } from './datetime';
+export { TSortBy, ISortByItem } from './sortby';
+
 /**
  * configuration for a OGC Features API service
  */
