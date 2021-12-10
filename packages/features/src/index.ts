@@ -1,8 +1,13 @@
 import { stringifyBbox } from './bbox';
 import { stringifyDatetime, IDateRange  } from './datetime';
 import { stringifyProperties } from './properties';
+import { stringifySortBy, TSortBy } from './sortby';
 import request, { IRequestParams } from './request';
 import { FeatureCollection, Feature } from 'geojson';
+
+// re-export types and interfaces for better user compatibility
+export { IDateRange } from './datetime';
+export { TSortBy, ISortByItem } from './sortby';
 
 /**
  * configuration for a OGC Features API service
@@ -75,6 +80,10 @@ export class Service {
       if (options.bboxCrs) {
         requestParams['bbox_crs'] = options.bboxCrs;
       }
+    }
+
+    if (options.sortby) {
+      requestParams.sortBy = stringifySortBy(options.sortby);
     }
 
     if (options.properties) {
@@ -278,6 +287,11 @@ export interface IGetFeaturesOptions extends IRequestOptions {
    * properties to include for the requested features
    */
   properties?: string | string[];
+
+  /**
+   * sorting direction in which features should be returned
+   */
+   sortby?: TSortBy;
 }
 
 /**
