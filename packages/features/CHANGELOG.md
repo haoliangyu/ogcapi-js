@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Added
+* Support to the `properties` query parameter ([#16](https://github.com/haoliangyu/ogcapi-js/pull/16))
+
 ## 0.2.3 - 2021-03-17
 
 ### Fixed
@@ -15,6 +20,6 @@
 ### Added
 * Support to OGCAPI Features API draft 2 ([#11](https://github.com/haoliangyu/ogcapi-js/pull/11))
 
-## 0.1.2 - 2020-0-/17
+## 0.1.2 - 2020-01-17
 
 * Initial release

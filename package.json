@@ -34,5 +34,9 @@
   },
   "workspaces": [
     "./packages/*"
-  ]
+  ],
+  "volta": {
+    "node": "16.13.1",
+    "npm": "8.1.2"
+  }
 }
