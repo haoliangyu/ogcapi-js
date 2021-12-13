@@ -105,7 +105,7 @@ export class Service {
     }
 
     if (options.sortby) {
-      requestParams.sortBy = stringifySortBy(options.sortby);
+      requestParams.sortby = stringifySortBy(options.sortby);
     }
 
     if (options.filter) {
