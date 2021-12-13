@@ -92,7 +92,7 @@ export class Service {
       requestParams.bbox = stringifyBbox(options.bbox);
 
       if (options.bboxCrs) {
-        requestParams['bbox_crs'] = options.bboxCrs;
+        requestParams['bbox-crs'] = options.bboxCrs;
       }
     }
 
