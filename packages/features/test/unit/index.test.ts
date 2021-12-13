@@ -1,4 +1,4 @@
-import { Service } from '../../src/index';
+import { Service, FilterLang } from '../../src/index';
 import mockRequest from '../mock-request';
 
 test('getConformance() should return a list of conformances', async function() {
@@ -39,8 +39,22 @@ test('getCollection() should return a collection', async function() {
 });
 
 test('getFeatures() should fetch features with parameters', async function() {
+  const searchParams = new URLSearchParams();
+
+  // order is important and must match processing in service.getFeatures().
+  searchParams.set('f', 'json');
+  searchParams.set('bbox', '1,2,3,4');
+  searchParams.set('bbox-crs', 'http://www.opengis.net/def/crs/OGC/1.3/CRS84');
+  searchParams.set('datetime', '2021-12-21T00:00:00.000Z');
+  searchParams.set('properties', 'PROPERTY_A,PROPERTY_B');
+  searchParams.set('sortby', 'PROPERTY_A,-PROPERTY_B');
+  searchParams.set('filter', 'PROPERTY_A = 3');
+  searchParams.set('filter-lang', 'cql-text')
+  searchParams.set('filter-crs', 'http://www.opengis.net/def/crs/OGC/1.3/CRS84');
+  searchParams.set('limit', '1');
+
   mockRequest(
-    'https://service.com/collections/test/items?f=json&bbox=1%2C2%2C3%2C4&bbox_crs=test&limit=1',
+    `https://service.com/collections/test/items?${searchParams.toString()}`,
     {
       type: 'FeatureCollection',
       features: [],
@@ -52,15 +66,20 @@ test('getFeatures() should fetch features with parameters', async function() {
   });
   const result = await service.getFeatures('test', {
     bbox: [1, 2, 3, 4],
-    bboxCrs: 'test',
+    bboxCrs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
     limit: 1,
+    datetime: new Date('2021-12-21T00:00:00.000Z'),
+    properties: ['PROPERTY_A', 'PROPERTY_B'],
+    sortby: ['PROPERTY_A', '-PROPERTY_B'],
+    filter: 'PROPERTY_A = 3',
+    filterLang: FilterLang.TEXT,
+    filterCrs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84'
   });
   expect(result).toEqual({
     type: 'FeatureCollection',
     features: [],
   });
 });
-
 test('getFeature() should fetch a feature', async function() {
   mockRequest('https://service.com/collections/test/items/a?f=json', {
     type: 'Feature',
