@@ -62,6 +62,12 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Enumerations</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-enum"><a href="enums/filterlang.html" class="tsd-kind-icon">Filter<wbr>Lang</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-class"><a href="classes/service.html" class="tsd-kind-icon">Service</a></li>
@@ -79,6 +85,7 @@
 								<li class="tsd-kind-interface"><a href="interfaces/igetfeatureoptions.html" class="tsd-kind-icon">IGet<wbr>Feature<wbr>Options</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/igetfeaturesoptions.html" class="tsd-kind-icon">IGet<wbr>Features<wbr>Options</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/igetfeaturesresponse.html" class="tsd-kind-icon">IGet<wbr>Features<wbr>Response</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/ijsonfilter.html" class="tsd-kind-icon">IJSONFilter</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/ilink.html" class="tsd-kind-icon">ILink</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/irequestoptions.html" class="tsd-kind-icon">IRequest<wbr>Options</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/iserviceconfig.html" class="tsd-kind-icon">IService<wbr>Config</a></li>
@@ -88,7 +95,9 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="modules.html#tfilter" class="tsd-kind-icon">TFilter</a></li>
 								<li class="tsd-kind-type-alias"><a href="modules.html#tsortby" class="tsd-kind-icon">TSort<wbr>By</a></li>
+								<li class="tsd-kind-type-alias"><a href="modules.html#ttextfilter" class="tsd-kind-icon">TText<wbr>Filter</a></li>
 							</ul>
 						</section>
 					</div>
@@ -97,17 +106,47 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="tfilter" class="tsd-anchor"></a>
+					<h3>TFilter</h3>
+					<div class="tsd-signature tsd-kind-icon">TFilter<span class="tsd-signature-symbol">:</span> <a href="modules.html#ttextfilter" class="tsd-signature-type" data-tsd-kind="Type alias">TTextFilter</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/ijsonfilter.html" class="tsd-signature-type" data-tsd-kind="Interface">IJSONFilter</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/e625b84/packages/features/src/filter/index.ts#L41">packages/features/src/filter/index.ts:41</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>filter type</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="tsortby" class="tsd-anchor"></a>
 					<h3>TSort<wbr>By</h3>
 					<div class="tsd-signature tsd-kind-icon">TSort<wbr>By<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/isortbyitem.html" class="tsd-signature-type" data-tsd-kind="Interface">ISortByItem</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/isortbyitem.html" class="tsd-signature-type" data-tsd-kind="Interface">ISortByItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/8a79fd0/packages/features/src/sortby.ts#L21">packages/features/src/sortby.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/e625b84/packages/features/src/sortby.ts#L21">packages/features/src/sortby.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>sort type</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="ttextfilter" class="tsd-anchor"></a>
+					<h3>TText<wbr>Filter</h3>
+					<div class="tsd-signature tsd-kind-icon">TText<wbr>Filter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/haoliangyu/ogcapi-js/blob/e625b84/packages/features/src/filter/index.ts#L29">packages/features/src/filter/index.ts:29</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>cql text filter</p>
 						</div>
 					</div>
 				</section>
@@ -123,6 +162,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/filterlang.html" class="tsd-kind-icon">Filter<wbr>Lang</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/service.html" class="tsd-kind-icon">Service</a>
 					</li>
@@ -154,6 +196,9 @@
 						<a href="interfaces/igetfeaturesresponse.html" class="tsd-kind-icon">IGet<wbr>Features<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/ijsonfilter.html" class="tsd-kind-icon">IJSONFilter</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/ilink.html" class="tsd-kind-icon">ILink</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -166,7 +211,13 @@
 						<a href="interfaces/isortbyitem.html" class="tsd-kind-icon">ISort<wbr>ByItem</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#tfilter" class="tsd-kind-icon">TFilter</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#tsortby" class="tsd-kind-icon">TSort<wbr>By</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#ttextfilter" class="tsd-kind-icon">TText<wbr>Filter</a>
 					</li>
 				</ul>
 			</nav>
