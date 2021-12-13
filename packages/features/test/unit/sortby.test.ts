@@ -28,6 +28,10 @@ test('isValidSortBy() should return false for invalid input', () => {
   expect(isValidSortBy([{ property: 'PROPERTY_B', order: 'random' } as any])).toBe(false);
 });
 
+test('stringifySortBy() should throw an error for invalid filters', () => {
+  expect(() => stringifySortBy({ property: '' })).toThrow('invalid sortby');
+});
+
 test('stringifySortBy() should return the passed string for string input', () => {
   expect(stringifySortBy('PROPERTY_A')).toBe('PROPERTY_A');
 });
