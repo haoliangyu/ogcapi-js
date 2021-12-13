@@ -10,7 +10,7 @@ import { stringifyFilter, TFilter, EFilterLang } from './filter';
 export { IDateRange } from './datetime';
 export { TSortBy, ISortByItem } from './sortby';
 export {
-  EFilterLang,
+  EFilterLang as FilterLang,
   TFilter,
   TTextFilter,
   IJSONFilter,
