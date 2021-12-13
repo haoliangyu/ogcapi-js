@@ -5,6 +5,7 @@
 ### Added
 * Support to the `properties` query parameter ([#16](https://github.com/haoliangyu/ogcapi-js/pull/16))
 * Support to the `sortby` query parameter ([#17](https://github.com/haoliangyu/ogcapi-js/pull/17))
+* Support to the `filter` query parameters ([#18](https://github.com/haoliangyu/ogcapi-js/pull/17))
 
 ## 0.2.3 - 2021-03-17
 
