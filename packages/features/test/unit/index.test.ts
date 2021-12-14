@@ -46,17 +46,17 @@ test('getFeatures() should fetch features with parameters', async function() {
       features: [],
     },
     {
-      query:  {
-        f: "json",
-        limit: "1",
-        bbox: "1,2,3,4",
-        "bbox-crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
-        datetime: "2021-12-21T00:00:00.000Z",
-        properties: "PROPERTY_A,PROPERTY_B",
-        sortby: "PROPERTY_A,-PROPERTY_B",
-        filter: "PROPERTY_A = 3",
-        "filter-lang": "cql-text",
-        "filter-crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
+      query: {
+        f: 'json',
+        limit: '1',
+        bbox: '1,2,3,4',
+        'bbox-crs': 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
+        datetime: '2021-12-21T00:00:00.000Z',
+        properties: 'PROPERTY_A,PROPERTY_B',
+        sortby: 'PROPERTY_A,-PROPERTY_B',
+        filter: 'PROPERTY_A = 3',
+        'filter-lang': 'cql-text',
+        'filter-crs': 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
       },
     }
   );
@@ -73,7 +73,7 @@ test('getFeatures() should fetch features with parameters', async function() {
     sortby: ['PROPERTY_A', '-PROPERTY_B'],
     filter: 'PROPERTY_A = 3',
     filterLang: FilterLang.TEXT,
-    filterCrs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84'
+    filterCrs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
   });
   expect(result).toEqual({
     type: 'FeatureCollection',
@@ -96,7 +96,7 @@ test('getFeature() should fetch a feature', async function() {
   });
 });
 
-test('getFeature() should fetch a feature with parameters', async function () {
+test('getFeature() should fetch a feature with parameters', async function() {
   mockRequest(
     'https://service.com/collections/test/items/a',
     {
@@ -106,8 +106,8 @@ test('getFeature() should fetch a feature with parameters', async function () {
     {
       query: {
         f: 'json',
-        crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84'
-      }
+        crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
+      },
     }
   );
 
@@ -115,7 +115,7 @@ test('getFeature() should fetch a feature with parameters', async function () {
     baseUrl: 'https://service.com',
   });
   const result = await service.getFeature('test', 'a', {
-    crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84'
+    crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
   });
   expect(result).toEqual({
     type: 'Feature',
@@ -123,7 +123,7 @@ test('getFeature() should fetch a feature with parameters', async function () {
   });
 });
 
-test('it could use a relative path for a local service', async function () {
+test('it could use a relative path for a local service', async function() {
   mockRequest(
     '/my-service/collections/test/items/a',
     {
@@ -133,8 +133,8 @@ test('it could use a relative path for a local service', async function () {
     {
       query: {
         f: 'json',
-        crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84'
-      }
+        crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
+      },
     }
   );
 
@@ -142,10 +142,10 @@ test('it could use a relative path for a local service', async function () {
     baseUrl: '/my-service',
   });
   const result = await service.getFeature('test', 'a', {
-    crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84'
+    crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
   });
   expect(result).toEqual({
     type: 'Feature',
     geometry: {},
   });
-})
+});

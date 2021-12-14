@@ -1,4 +1,4 @@
-import { isValidCrs } from "./crs";
+import { isValidCrs } from './crs';
 
 export function isValidBbox(bbox: number[]): boolean {
   if (!Array.isArray(bbox)) {

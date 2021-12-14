@@ -11,10 +11,7 @@ export default async function request(
   searchParams.append('f', 'json');
 
   for (const key in params) {
-    searchParams.append(
-      key,
-      params[key].toString()
-    );
+    searchParams.append(key, params[key].toString());
   }
 
   const res: Response = await fetch(`${url}?${searchParams.toString()}`, {

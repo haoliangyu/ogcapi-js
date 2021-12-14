@@ -1,4 +1,8 @@
-import { isValidFilterLang, EFilterLang, guessFilterLang } from '../../../src/filter/lang';
+import {
+  isValidFilterLang,
+  EFilterLang,
+  guessFilterLang,
+} from '../../../src/filter/lang';
 
 test('isValidFilterLang() should return true for valid input', () => {
   expect(isValidFilterLang(EFilterLang.TEXT)).toBe(true);
@@ -17,8 +21,14 @@ test("guessFilterLang() should return 'cql-json' for object input", () => {
   expect(guessFilterLang({ and: [] })).toBe(EFilterLang.JSON);
 });
 
-test("guessFilterLang() should throw for non string input and non object input", () => {
-  expect(() => guessFilterLang([])).toThrow('failed to guess filter lang from filter');
-  expect(() => guessFilterLang(3)).toThrow('failed to guess filter lang from filter');
-  expect(() => guessFilterLang(true)).toThrow('failed to guess filter lang from filter');
+test('guessFilterLang() should throw for non string input and non object input', () => {
+  expect(() => guessFilterLang([])).toThrow(
+    'failed to guess filter lang from filter'
+  );
+  expect(() => guessFilterLang(3)).toThrow(
+    'failed to guess filter lang from filter'
+  );
+  expect(() => guessFilterLang(true)).toThrow(
+    'failed to guess filter lang from filter'
+  );
 });

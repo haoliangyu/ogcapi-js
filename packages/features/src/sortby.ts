@@ -1,7 +1,7 @@
 /**
  * sort item descriptor
  */
- export interface ISortByItem {
+export interface ISortByItem {
   /**
    * property to sort by
    */
@@ -27,7 +27,7 @@ export function isValidSortBy(sortBy: TSortBy): boolean {
     }
 
     // validate each array item
-    return sortBy.every((sortByItem) => isValidSortBy(sortByItem));
+    return sortBy.every(sortByItem => isValidSortBy(sortByItem));
   }
 
   if (typeof sortBy !== 'string') {
@@ -45,7 +45,6 @@ export function isValidSortBy(sortBy: TSortBy): boolean {
  * @internal
  */
 function isValidSortByItem({ property, order }: ISortByItem): boolean {
-
   if (typeof property !== 'string') {
     return false;
   }
@@ -69,13 +68,14 @@ export function stringifySortBy(sortBy: TSortBy): string {
 
   if (Array.isArray(sortBy)) {
     return sortBy
-      .map((sortByItem) => {
+      .map(sortByItem => {
         if (typeof sortByItem !== 'string') {
           return stringifySortByItem(sortByItem);
         }
 
         return sortByItem;
-      }).toString();
+      })
+      .toString();
   }
 
   if (typeof sortBy !== 'string') {

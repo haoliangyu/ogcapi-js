@@ -21,5 +21,7 @@ test('stringifyProperties() should return the passed string for string input', (
 });
 
 test('stringifyProperties() should return a comma seperated properties string for array input', () => {
-  expect(stringifyProperties(['PROPERTY_A', 'PROPERTY_B'])).toBe('PROPERTY_A,PROPERTY_B');
+  expect(stringifyProperties(['PROPERTY_A', 'PROPERTY_B'])).toBe(
+    'PROPERTY_A,PROPERTY_B'
+  );
 });

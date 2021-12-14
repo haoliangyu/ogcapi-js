@@ -1,4 +1,4 @@
-import { isUrl } from "./util";
+import { isUrl } from './util';
 
 export function isValidCrs(crs: string): boolean {
   return isUrl(crs);

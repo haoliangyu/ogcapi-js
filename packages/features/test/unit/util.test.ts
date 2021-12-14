@@ -1,4 +1,4 @@
-import { isObject, isUrl } from "../../src/util";
+import { isObject, isUrl } from '../../src/util';
 
 test('isObject() should return true for object input', () => {
   expect(isObject({})).toBe(true);

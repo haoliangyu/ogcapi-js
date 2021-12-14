@@ -1,4 +1,4 @@
-import { isObject } from "../util";
+import { isObject } from '../util';
 
 /**
  * filter lang enumeration
