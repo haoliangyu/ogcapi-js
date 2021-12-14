@@ -1,13 +1,21 @@
-import { stringifyBbox } from './bbox';
-import { stringifyDatetime, IDateRange  } from './datetime';
+import { stringifyBbox, stringifyBboxCrs } from './bbox';
+import { stringifyDatetime, IDateRange } from './datetime';
 import { stringifyProperties } from './properties';
 import { stringifySortBy, TSortBy } from './sortby';
 import request, { IRequestParams } from './request';
 import { FeatureCollection, Feature } from 'geojson';
+import { stringifyFilter, TFilter, EFilterLang } from './filter';
+import { stringifyCrs } from './crs';
 
-// re-export types and interfaces for better user compatibility
+// re-export constants, interfaces and types for better user compatibility
 export { IDateRange } from './datetime';
 export { TSortBy, ISortByItem } from './sortby';
+export {
+  EFilterLang as FilterLang,
+  TFilter,
+  TTextFilter,
+  IJSONFilter,
+} from './filter';
 
 /**
  * configuration for a OGC Features API service
@@ -36,7 +44,9 @@ export class Service {
    * Get a list of conformed standards
    * @param options       options
    */
-  async getConformance(options: IRequestOptions = {}): Promise<IGetConformanceResponse> {
+  async getConformance(
+    options: IRequestOptions = {}
+  ): Promise<IGetConformanceResponse> {
     const url: string = `${this._baseUrl}/conformance`;
     const result: IGetConformanceResponse = await request(url, options.params);
     return result;
@@ -46,7 +56,9 @@ export class Service {
    * Get a list of feature collections
    * @param options       options
    */
-  async getCollections(options: IRequestOptions = {}): Promise<IGetCollectionsResponse> {
+  async getCollections(
+    options: IRequestOptions = {}
+  ): Promise<IGetCollectionsResponse> {
     const url: string = `${this._baseUrl}/collections`;
     const result: IGetCollectionsResponse = await request(url, options.params);
     return result;
@@ -57,7 +69,10 @@ export class Service {
    * @param collectionId collection id
    * @param options       options
    */
-  async getCollection(collectionId: string, options: IRequestOptions = {}): Promise<ICollection> {
+  async getCollection(
+    collectionId: string,
+    options: IRequestOptions = {}
+  ): Promise<ICollection> {
     const url: string = `${this._baseUrl}/collections/${collectionId}`;
     const result: ICollection = await request(url, options.params);
     return result;
@@ -78,20 +93,35 @@ export class Service {
       requestParams.bbox = stringifyBbox(options.bbox);
 
       if (options.bboxCrs) {
-        requestParams['bbox_crs'] = options.bboxCrs;
+        requestParams['bbox-crs'] = stringifyBboxCrs(options.bboxCrs);
       }
     }
 
-    if (options.sortby) {
-      requestParams.sortBy = stringifySortBy(options.sortby);
+    if (options.datetime) {
+      requestParams.datetime = stringifyDatetime(options.datetime);
     }
 
     if (options.properties) {
       requestParams.properties = stringifyProperties(options.properties);
     }
 
-    if (options.datetime) {
-      requestParams.datetime = stringifyDatetime(options.datetime);
+    if (options.sortby) {
+      requestParams.sortby = stringifySortBy(options.sortby);
+    }
+
+    if (options.filter) {
+      const { filter, filterCrs, filterLang } = stringifyFilter({
+        filter: options.filter,
+        filterCrs: options.filterCrs,
+        filterLang: options.filterLang,
+      });
+
+      requestParams.filter = filter;
+      requestParams['filter-lang'] = filterLang;
+
+      if (filterCrs) {
+        requestParams['filter-crs'] = filterCrs;
+      }
     }
 
     // should take care of 0
@@ -119,7 +149,7 @@ export class Service {
     const requestParams: IRequestParams = Object.assign({}, options.params);
 
     if (options.crs) {
-      requestParams.crs = options.crs;
+      requestParams.crs = stringifyCrs(options.crs);
     }
 
     const result: IFeature = await request(url, requestParams);
@@ -182,7 +212,7 @@ export interface ICollection {
   storageCrsCoordinateEpoch?: number;
 }
 
-export interface IFeatures extends FeatureCollection { }
+export interface IFeatures extends FeatureCollection {}
 
 /**
  * collection feature
@@ -271,7 +301,7 @@ export interface IGetFeaturesOptions extends IRequestOptions {
   /**
    * the CRS used for the coordinate values of the bbox parameter
    */
-  bboxCrs?: string,
+  bboxCrs?: string;
 
   /**
    * feature datetime range
@@ -291,7 +321,22 @@ export interface IGetFeaturesOptions extends IRequestOptions {
   /**
    * sorting direction in which features should be returned
    */
-   sortby?: TSortBy;
+  sortby?: TSortBy;
+
+  /**
+   * CQL filter expression
+   */
+  filter?: TFilter;
+
+  /**
+   * CQL filter expression language
+   */
+  filterLang?: EFilterLang;
+
+  /**
+   * the CRS used for coordinate values in CQL spatial filter expressions
+   */
+  filterCrs?: string;
 }
 
 /**
