@@ -1,4 +1,4 @@
-import { isValidBbox, stringifyBbox } from '../../src/bbox';
+import { isValidBbox, stringifyBbox, stringifyBboxCrs } from '../../src/bbox';
 
 test('isValidBbox() should return false for invalid input', () => {
   expect(isValidBbox([])).toBe(false);
@@ -16,4 +16,14 @@ test('stringifyBbox() should throw an error for invalid input', () => {
 
 test('stringifyBbox() should return a commas-separated number array', () => {
   expect(stringifyBbox([1, 2, 3, 4])).toBe('1,2,3,4');
+});
+
+test('stringifyBbboxCrs() should throw an error for invalid input', () => {
+  expect(() => stringifyBboxCrs('CRS84')).toThrow('invalid bbox crs');
+});
+
+test('stringifyBbboxCrs() should return passed crs', () => {
+  expect(stringifyBboxCrs('http://www.opengis.net/def/crs/OGC/1.3/CRS84')).toBe(
+    'http://www.opengis.net/def/crs/OGC/1.3/CRS84'
+  );
 });

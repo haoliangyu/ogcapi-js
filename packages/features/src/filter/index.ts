@@ -1,5 +1,5 @@
 import { isObject } from '../util';
-import { isValidFilterCrs } from './crs';
+import { isValidCrs } from '../crs';
 import { EFilterLang, guessFilterLang, isValidFilterLang } from './lang';
 
 // re-export types and constants
@@ -87,7 +87,7 @@ export function stringifyFilter({
     throw new Error('invalid filter');
   }
 
-  if (filterCrs && !isValidFilterCrs(filterCrs)) {
+  if (filterCrs && !isValidCrs(filterCrs)) {
     throw new Error('invalid filter crs');
   }
 

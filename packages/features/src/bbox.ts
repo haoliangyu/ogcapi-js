@@ -1,3 +1,5 @@
+import { isValidCrs } from "./crs";
+
 export function isValidBbox(bbox: number[]): boolean {
   if (!Array.isArray(bbox)) {
     return false;
@@ -17,4 +19,12 @@ export function stringifyBbox(bbox: number[]): string {
   }
 
   return bbox.toString();
+}
+
+export function stringifyBboxCrs(bboxCrs: string): string {
+  if (!isValidCrs(bboxCrs)) {
+    throw new Error('invalid bbox crs');
+  }
+
+  return bboxCrs;
 }

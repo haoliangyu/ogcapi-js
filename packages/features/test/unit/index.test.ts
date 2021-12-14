@@ -97,16 +97,25 @@ test('getFeature() should fetch a feature', async function() {
 });
 
 test('getFeature() should fetch a feature with parameters', async function () {
-  mockRequest('https://service.com/collections/test/items/a?f=json&crs=test', {
-    type: 'Feature',
-    geometry: {},
-  });
+  mockRequest(
+    'https://service.com/collections/test/items/a',
+    {
+      type: 'Feature',
+      geometry: {},
+    },
+    {
+      query: {
+        f: 'json',
+        crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84'
+      }
+    }
+  );
 
   const service = new Service({
     baseUrl: 'https://service.com',
   });
   const result = await service.getFeature('test', 'a', {
-    crs: 'test'
+    crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84'
   });
   expect(result).toEqual({
     type: 'Feature',
@@ -115,16 +124,25 @@ test('getFeature() should fetch a feature with parameters', async function () {
 });
 
 test('it could use a relative path for a local service', async function () {
-  mockRequest('/my-service/collections/test/items/a?f=json&crs=test', {
-    type: 'Feature',
-    geometry: {},
-  });
+  mockRequest(
+    '/my-service/collections/test/items/a',
+    {
+      type: 'Feature',
+      geometry: {},
+    },
+    {
+      query: {
+        f: 'json',
+        crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84'
+      }
+    }
+  );
 
   const service = new Service({
     baseUrl: '/my-service',
   });
   const result = await service.getFeature('test', 'a', {
-    crs: 'test'
+    crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84'
   });
   expect(result).toEqual({
     type: 'Feature',

@@ -1,10 +1,11 @@
-import { stringifyBbox } from './bbox';
+import { stringifyBbox, stringifyBboxCrs } from './bbox';
 import { stringifyDatetime, IDateRange } from './datetime';
 import { stringifyProperties } from './properties';
 import { stringifySortBy, TSortBy } from './sortby';
 import request, { IRequestParams } from './request';
 import { FeatureCollection, Feature } from 'geojson';
 import { stringifyFilter, TFilter, EFilterLang } from './filter';
+import { stringifyCrs } from './crs';
 
 // re-export constants, interfaces and types for better user compatibility
 export { IDateRange } from './datetime';
@@ -92,7 +93,7 @@ export class Service {
       requestParams.bbox = stringifyBbox(options.bbox);
 
       if (options.bboxCrs) {
-        requestParams['bbox-crs'] = options.bboxCrs;
+        requestParams['bbox-crs'] = stringifyBboxCrs(options.bboxCrs);
       }
     }
 
@@ -148,7 +149,7 @@ export class Service {
     const requestParams: IRequestParams = Object.assign({}, options.params);
 
     if (options.crs) {
-      requestParams.crs = options.crs;
+      requestParams.crs = stringifyCrs(options.crs);
     }
 
     const result: IFeature = await request(url, requestParams);
