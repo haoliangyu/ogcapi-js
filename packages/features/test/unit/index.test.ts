@@ -40,7 +40,7 @@ test('getCollection() should return a collection', async function() {
 
 test('getFeatures() should fetch features with parameters', async function() {
   mockRequest(
-    `https://service.com/collections/test/items`,
+    'https://service.com/collections/test/items',
     {
       type: 'FeatureCollection',
       features: [],
