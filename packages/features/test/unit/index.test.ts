@@ -39,25 +39,25 @@ test('getCollection() should return a collection', async function() {
 });
 
 test('getFeatures() should fetch features with parameters', async function() {
-  const searchParams = new URLSearchParams();
-
-  // order is important and must match processing in service.getFeatures().
-  searchParams.set('f', 'json');
-  searchParams.set('bbox', '1,2,3,4');
-  searchParams.set('bbox-crs', 'http://www.opengis.net/def/crs/OGC/1.3/CRS84');
-  searchParams.set('datetime', '2021-12-21T00:00:00.000Z');
-  searchParams.set('properties', 'PROPERTY_A,PROPERTY_B');
-  searchParams.set('sortby', 'PROPERTY_A,-PROPERTY_B');
-  searchParams.set('filter', 'PROPERTY_A = 3');
-  searchParams.set('filter-lang', 'cql-text')
-  searchParams.set('filter-crs', 'http://www.opengis.net/def/crs/OGC/1.3/CRS84');
-  searchParams.set('limit', '1');
-
   mockRequest(
-    `https://service.com/collections/test/items?${searchParams.toString()}`,
+    `https://service.com/collections/test/items`,
     {
       type: 'FeatureCollection',
       features: [],
+    },
+    {
+      query:  {
+        f: "json",
+        limit: "1",
+        bbox: "1,2,3,4",
+        "bbox-crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
+        datetime: "2021-12-21T00:00:00.000Z",
+        properties: "PROPERTY_A,PROPERTY_B",
+        sortby: "PROPERTY_A,-PROPERTY_B",
+        filter: "PROPERTY_A = 3",
+        "filter-lang": "cql-text",
+        "filter-crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
+      },
     }
   );
 
