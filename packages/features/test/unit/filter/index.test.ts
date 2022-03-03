@@ -29,10 +29,10 @@ test('stringifyFilter() should return the stringified json for object input', ()
 
 test('stringifyFilter() should auto guess filter lang', () => {
   expect(stringifyFilter({ filter: 'PROPERTY_A = 3' }).filterLang).toBe(
-    EFilterLang.TEXT
+    EFilterLang.CQL2_TEXT
   );
   expect(stringifyFilter({ filter: { and: [] } }).filterLang).toBe(
-    EFilterLang.JSON
+    EFilterLang.CQL2_JSON
   );
 });
 
