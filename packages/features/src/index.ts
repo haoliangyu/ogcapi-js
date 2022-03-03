@@ -89,6 +89,10 @@ export class Service {
   ): Promise<IGetFeaturesResponse> {
     const requestParams: IRequestParams = Object.assign({}, options.params);
 
+    if (options.crs) {
+      requestParams.crs = stringifyCrs(options.crs);
+    }
+
     if (options.bbox) {
       requestParams.bbox = stringifyBbox(options.bbox);
 
@@ -117,7 +121,10 @@ export class Service {
       });
 
       requestParams.filter = filter;
-      requestParams['filter-lang'] = filterLang;
+
+      if (filterLang) {
+        requestParams['filter-lang'] = filterLang;
+      }
 
       if (filterCrs) {
         requestParams['filter-crs'] = filterCrs;
