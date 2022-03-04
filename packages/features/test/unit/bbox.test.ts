@@ -11,6 +11,7 @@ test('isValidBbox() should return true for valid input', () => {
 });
 
 test('stringifyBbox() should throw an error for invalid input', () => {
+  expect(() => stringifyBbox({} as any)).toThrow('invalid bbox');
   expect(() => stringifyBbox([])).toThrow('invalid bbox');
 });
 
