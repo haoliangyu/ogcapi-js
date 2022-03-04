@@ -117,7 +117,10 @@ export class Service {
       });
 
       requestParams.filter = filter;
-      requestParams['filter-lang'] = filterLang;
+
+      if (filterLang) {
+        requestParams['filter-lang'] = filterLang;
+      }
 
       if (filterCrs) {
         requestParams['filter-crs'] = filterCrs;

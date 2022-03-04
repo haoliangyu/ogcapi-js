@@ -55,7 +55,7 @@ test('getFeatures() should fetch features with parameters', async function() {
         properties: 'PROPERTY_A,PROPERTY_B',
         sortby: 'PROPERTY_A,-PROPERTY_B',
         filter: 'PROPERTY_A = 3',
-        'filter-lang': 'cql-text',
+        'filter-lang': 'cql2-text',
         'filter-crs': 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
       },
     }
@@ -72,7 +72,7 @@ test('getFeatures() should fetch features with parameters', async function() {
     properties: ['PROPERTY_A', 'PROPERTY_B'],
     sortby: ['PROPERTY_A', '-PROPERTY_B'],
     filter: 'PROPERTY_A = 3',
-    filterLang: FilterLang.TEXT,
+    filterLang: FilterLang.CQL2_TEXT,
     filterCrs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
   });
   expect(result).toEqual({
