@@ -89,6 +89,10 @@ export class Service {
   ): Promise<IGetFeaturesResponse> {
     const requestParams: IRequestParams = Object.assign({}, options.params);
 
+    if (options.crs) {
+      requestParams.crs = stringifyBboxCrs(options.crs);
+    }
+
     if (options.bbox) {
       requestParams.bbox = stringifyBbox(options.bbox);
 

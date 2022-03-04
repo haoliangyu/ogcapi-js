@@ -50,6 +50,7 @@ test('getFeatures() should fetch features with parameters', async function() {
         f: 'json',
         limit: '1',
         bbox: '1,2,3,4',
+        crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
         'bbox-crs': 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
         datetime: '2021-12-21T00:00:00.000Z',
         properties: 'PROPERTY_A,PROPERTY_B',
@@ -65,6 +66,7 @@ test('getFeatures() should fetch features with parameters', async function() {
     baseUrl: 'https://service.com',
   });
   const result = await service.getFeatures('test', {
+    crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
     bbox: [1, 2, 3, 4],
     bboxCrs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
     limit: 1,
