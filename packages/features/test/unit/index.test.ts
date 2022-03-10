@@ -38,6 +38,46 @@ test('getCollection() should return a collection', async function() {
   expect(result).toEqual({ id: 'test', links: [] });
 });
 
+test('getQueryables() should return queryables for collection', async function() {
+  mockRequest('https://service.com/collections/test/queryables?f=json', {
+    title: 'test',
+    properties: {
+      propertyA: {
+        type: 'integer',
+        title: 'propertyA',
+      },
+      propertyB: {
+        type: 'string',
+        title: 'propertyB',
+      },
+    },
+    type: 'object',
+    $schema: 'https://json-schema.org/draft/2019-09/schema',
+    $id: 'https://service.com/collections/test/queryables',
+  });
+
+  const service = new Service({
+    baseUrl: 'https://service.com',
+  });
+  const result = await service.getQueryables('test');
+  expect(result).toEqual({
+    title: 'test',
+    properties: {
+      propertyA: {
+        type: 'integer',
+        title: 'propertyA',
+      },
+      propertyB: {
+        type: 'string',
+        title: 'propertyB',
+      },
+    },
+    type: 'object',
+    $schema: 'https://json-schema.org/draft/2019-09/schema',
+    $id: 'https://service.com/collections/test/queryables',
+  });
+});
+
 test('getFeatures() should fetch features with parameters', async function() {
   mockRequest(
     'https://service.com/collections/test/items',
