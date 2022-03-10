@@ -66,7 +66,7 @@ export class Service {
   }
 
   /**
-   * Get a feature coolection by id
+   * Get a feature collection by id
    * @param collectionId collection id
    * @param options       options
    */
