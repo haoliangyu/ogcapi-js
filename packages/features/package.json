@@ -31,7 +31,8 @@
     "url": "https://github.com/haoliangyu/ogcapi-js/issues"
   },
   "dependencies": {
-    "@types/geojson": "^7946.0.7"
+    "@types/geojson": "^7946.0.7",
+    "@types/json-schema": "^7.0.9"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",
