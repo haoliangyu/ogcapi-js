@@ -234,6 +234,9 @@ export interface ICollection {
   storageCrsCoordinateEpoch?: number;
 }
 
+/**
+ * collection queryables
+ */
 export interface IQueryables extends JSONSchema7 {}
 
 /**
