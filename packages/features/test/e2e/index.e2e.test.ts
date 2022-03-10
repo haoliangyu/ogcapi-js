@@ -2,7 +2,7 @@ import { Service, ICollection } from '../../src/index';
 
 require('isomorphic-fetch');
 
-const TEST_SITE = 'https://www.ldproxy.nrw.de/topographie';
+const TEST_SITE = 'https://demo.ldproxy.net/vineyards';
 
 test('e2e: getConformance() should return a conformance list', async () => {
   const service = new Service({ baseUrl: TEST_SITE });
@@ -26,14 +26,28 @@ test('e2e: getCollections() should return an array of collections', async () => 
 
 test('e2e: getCollection() should return a collection', async () => {
   const service = new Service({ baseUrl: TEST_SITE });
-  const collection = await service.getCollection('ax_bahnverkehrsanlage');
+  const collection = await service.getCollection('vineyards');
 
   expect(collection.title).toBeTruthy();
 });
 
+test('e2e: getQueryables() should return queryables for collection', async () => {
+  const service = new Service({ baseUrl: TEST_SITE });
+  const queryables = await service.getQueryables('vineyards');
+
+  expect(queryables.title).toBeTruthy();
+  expect(queryables.properties).toBeTruthy();
+  expect(queryables.type).toBe('object');
+  expect(queryables.$id).toBe(`${TEST_SITE}/collections/vineyards/queryables`);
+  expect(
+    queryables.$schema === 'https://json-schema.org/draft/2019-09/schema' ||
+    queryables.$schema === 'http://json-schema.org/draft-07/schema#'
+  ).toBe(true);
+});
+
 test('e2e: getFeatures() should return a GeoJSON feature collection', async () => {
   const service = new Service({ baseUrl: TEST_SITE });
-  const result = await service.getFeatures('ax_bahnverkehrsanlage');
+  const result = await service.getFeatures('vineyards');
 
   expect(result.type).toBe('FeatureCollection');
   expect(Array.isArray(result.features)).toBe(true);
@@ -41,12 +55,10 @@ test('e2e: getFeatures() should return a GeoJSON feature collection', async () =
 
 test('e2e: getFeature() should return a GeoJSON feature', async () => {
   const service = new Service({ baseUrl: TEST_SITE });
-  const result = await service.getFeature(
-    'ax_bahnverkehrsanlage',
-    'DENWAT01D000Abbi'
-  );
+  const result = await service.getFeature('vineyards', '460270');
 
   expect(result.type).toBe('Feature');
+  expect(result.id).toBe(460270);
   expect(result.geometry).toBeTruthy();
   expect(result.properties).toBeTruthy();
 });

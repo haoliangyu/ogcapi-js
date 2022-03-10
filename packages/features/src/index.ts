@@ -1,21 +1,22 @@
+import { Feature, FeatureCollection } from 'geojson';
+import { JSONSchema7 } from 'json-schema';
 import { stringifyBbox, stringifyBboxCrs } from './bbox';
-import { stringifyDatetime, IDateRange } from './datetime';
-import { stringifyProperties } from './properties';
-import { stringifySortBy, TSortBy } from './sortby';
-import request, { IRequestParams } from './request';
-import { FeatureCollection, Feature } from 'geojson';
-import { stringifyFilter, TFilter, EFilterLang } from './filter';
 import { stringifyCrs } from './crs';
+import { IDateRange, stringifyDatetime } from './datetime';
+import { EFilterLang, stringifyFilter, TFilter } from './filter';
+import { stringifyProperties } from './properties';
+import request, { IRequestParams } from './request';
+import { stringifySortBy, TSortBy } from './sortby';
 
 // re-export constants, interfaces and types for better user compatibility
 export { IDateRange } from './datetime';
-export { TSortBy, ISortByItem } from './sortby';
 export {
   EFilterLang as FilterLang,
+  IJSONFilter,
   TFilter,
   TTextFilter,
-  IJSONFilter,
 } from './filter';
+export { ISortByItem, TSortBy } from './sortby';
 
 /**
  * configuration for a OGC Features API service
@@ -65,7 +66,7 @@ export class Service {
   }
 
   /**
-   * Get a feature coolection by id
+   * Get a feature collection by id
    * @param collectionId collection id
    * @param options       options
    */
@@ -75,6 +76,20 @@ export class Service {
   ): Promise<ICollection> {
     const url: string = `${this._baseUrl}/collections/${collectionId}`;
     const result: ICollection = await request(url, options.params);
+    return result;
+  }
+
+  /**
+   * Get queryables from a collection by id
+   * @param collectionId collection id
+   * @param options       options
+   */
+   async getQueryables(
+    collectionId: string,
+    options: IRequestOptions = {}
+  ): Promise<IQueryables> {
+    const url: string = `${this._baseUrl}/collections/${collectionId}/queryables`;
+    const result: IQueryables = await request(url, options.params);
     return result;
   }
 
@@ -219,6 +234,14 @@ export interface ICollection {
   storageCrsCoordinateEpoch?: number;
 }
 
+/**
+ * collection queryables
+ */
+export interface IQueryables extends JSONSchema7 {}
+
+/**
+ * collection features
+ */
 export interface IFeatures extends FeatureCollection {}
 
 /**
