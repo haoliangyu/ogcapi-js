@@ -80,7 +80,7 @@ export class Service {
   }
 
   /**
-   * Get a queryables from a collection by id
+   * Get queryables from a collection by id
    * @param collectionId collection id
    * @param options       options
    */
