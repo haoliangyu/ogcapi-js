@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 0.4.0 - 2022-03-10
+
+### Added
+* Support to get `Queryables` resource ([#25](https://github.com/haoliangyu/ogcapi-js/pull/25))
+
+### Fixed
+* `crs` query parameter was not passed to `getFeatures` request options ([#23](https://github.com/haoliangyu/ogcapi-js/pull/23))
+
 ## 0.3.0 - 2021-12-14
 
 ### Added
