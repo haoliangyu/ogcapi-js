@@ -84,7 +84,7 @@ export class Service {
    * @param collectionId collection id
    * @param options       options
    */
-   async getQueryables(
+  async getQueryables(
     collectionId: string,
     options: IRequestOptions = {}
   ): Promise<IQueryables> {

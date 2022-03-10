@@ -41,7 +41,7 @@ test('e2e: getQueryables() should return queryables for collection', async () =>
   expect(queryables.$id).toBe(`${TEST_SITE}/collections/vineyards/queryables`);
   expect(
     queryables.$schema === 'https://json-schema.org/draft/2019-09/schema' ||
-    queryables.$schema === 'http://json-schema.org/draft-07/schema#'
+      queryables.$schema === 'http://json-schema.org/draft-07/schema#'
   ).toBe(true);
 });
 
