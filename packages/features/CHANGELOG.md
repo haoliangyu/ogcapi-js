@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 0.4.1 - 2022-11-28
+
+### Fixed
+* `crs` query parameter was incorrectly set to be required ([#36](https://github.com/haoliangyu/ogcapi-js/pull/36))
+
 ## 0.4.0 - 2022-03-10
 
 ### Added
