@@ -311,7 +311,7 @@ export interface IGetCollectionsResponse {
   /**
    * a global list of CRS identifiers that are supported by spatial feature collections offered by the service
    */
-  crs: string[];
+  crs?: string[];
 }
 
 /**
