@@ -26,9 +26,9 @@
   "name": "ogcapi-js",
   "author": "Haoliang Yu",
   "devDependencies": {
-    "@lerna/version": "^3.22.1",
+    "@lerna/version": "^6.3.0",
     "husky": "^4.3.8",
-    "lerna": "^3.22.1",
+    "lerna": "^6.3.0",
     "npm-check-updates": "^16.4.3",
     "open-cli": "^7.0.1",
     "typedoc": "^0.20.23",
