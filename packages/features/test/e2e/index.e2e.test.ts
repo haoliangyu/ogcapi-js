@@ -1,11 +1,11 @@
-import { Service, ICollection } from '../../src/index';
+import { FeatureService, ICollection } from '../../src/index';
 
 require('isomorphic-fetch');
 
 const TEST_SITE = 'https://demo.ldproxy.net/vineyards';
 
 test('e2e: getConformance() should return a conformance list', async () => {
-  const service = new Service({ baseUrl: TEST_SITE });
+  const service = new FeatureService({ baseUrl: TEST_SITE });
   const result = await service.getConformance();
   expect(Array.isArray(result.conformsTo)).toBe(true);
 
@@ -15,7 +15,7 @@ test('e2e: getConformance() should return a conformance list', async () => {
 });
 
 test('e2e: getCollections() should return an array of collections', async () => {
-  const service = new Service({ baseUrl: TEST_SITE });
+  const service = new FeatureService({ baseUrl: TEST_SITE });
   const result = await service.getCollections();
   expect(Array.isArray(result.collections)).toBe(true);
 
@@ -25,14 +25,14 @@ test('e2e: getCollections() should return an array of collections', async () => 
 });
 
 test('e2e: getCollection() should return a collection', async () => {
-  const service = new Service({ baseUrl: TEST_SITE });
+  const service = new FeatureService({ baseUrl: TEST_SITE });
   const collection = await service.getCollection('vineyards');
 
   expect(collection.title).toBeTruthy();
 });
 
 test('e2e: getQueryables() should return queryables for collection', async () => {
-  const service = new Service({ baseUrl: TEST_SITE });
+  const service = new FeatureService({ baseUrl: TEST_SITE });
   const queryables = await service.getQueryables('vineyards');
 
   expect(queryables.title).toBeTruthy();
@@ -46,7 +46,7 @@ test('e2e: getQueryables() should return queryables for collection', async () =>
 });
 
 test('e2e: getFeatures() should return a GeoJSON feature collection', async () => {
-  const service = new Service({ baseUrl: TEST_SITE });
+  const service = new FeatureService({ baseUrl: TEST_SITE });
   const result = await service.getFeatures('vineyards');
 
   expect(result.type).toBe('FeatureCollection');
@@ -54,7 +54,7 @@ test('e2e: getFeatures() should return a GeoJSON feature collection', async () =
 });
 
 test('e2e: getFeature() should return a GeoJSON feature', async () => {
-  const service = new Service({ baseUrl: TEST_SITE });
+  const service = new FeatureService({ baseUrl: TEST_SITE });
   const result = await service.getFeature('vineyards', '460270');
 
   expect(result.type).toBe('Feature');

@@ -31,7 +31,7 @@ export {
 /**
  * configuration for a OGC Features API service
  */
-export interface IServiceConfig {
+export interface IFeatureServiceConfig {
   /**
    * service base url
    */
@@ -41,13 +41,13 @@ export interface IServiceConfig {
 /**
  * OGC Features API service class
  */
-export class Service {
+export class FeatureService {
   private _baseUrl: string;
 
   /**
    * constructor
    */
-  constructor(config: IServiceConfig) {
+  constructor(config: IFeatureServiceConfig) {
     this._baseUrl = config.baseUrl;
   }
 
