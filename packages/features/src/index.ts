@@ -1,22 +1,32 @@
+import {
+  EFilterLang,
+  IDateRange,
+  IRequestParams,
+  TFilter,
+  TSortBy,
+  request,
+  stringifyBbox,
+  stringifyBboxCrs,
+  stringifyCrs,
+  stringifyDatetime,
+  stringifyFilter,
+  stringifyProperties,
+  stringifySortBy,
+} from '@ogcapi-js/shared';
 import { Feature, FeatureCollection } from 'geojson';
 import { JSONSchema7 } from 'json-schema';
-import { stringifyBbox, stringifyBboxCrs } from './bbox';
-import { stringifyCrs } from './crs';
-import { IDateRange, stringifyDatetime } from './datetime';
-import { EFilterLang, stringifyFilter, TFilter } from './filter';
-import { stringifyProperties } from './properties';
-import request, { IRequestParams } from './request';
-import { stringifySortBy, TSortBy } from './sortby';
 
 // re-export constants, interfaces and types for better user compatibility
-export { IDateRange } from './datetime';
 export {
   EFilterLang as FilterLang,
+  IDateRange,
   IJSONFilter,
+  IRequestParams,
+  ISortByItem,
   TFilter,
+  TSortBy,
   TTextFilter,
-} from './filter';
-export { ISortByItem, TSortBy } from './sortby';
+} from '@ogcapi-js/shared';
 
 /**
  * configuration for a OGC Features API service
