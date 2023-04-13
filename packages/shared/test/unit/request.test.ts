@@ -1,5 +1,5 @@
-import request from '../../src/request';
-import mockRequest from '../mock-request';
+import { mockRequest } from '@ogcapi-js/test-utils';
+import { request } from '../../src/request';
 
 test('request() should send a GET request with f=json', async () => {
   mockRequest('https://www.example.com?f=json', {
