@@ -3,7 +3,7 @@
  * @param url
  * @param params
  */
-export default async function request(
+export async function request(
   url: string,
   params: IRequestParams = {}
 ): Promise<any> {

@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock';
 
-export default function mockRequest(
+export function mockRequest(
   url: string,
   response: any,
   options: any = {}

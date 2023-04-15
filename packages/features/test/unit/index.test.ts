@@ -1,12 +1,12 @@
-import { Service, FilterLang } from '../../src/index';
-import mockRequest from '../mock-request';
+import { mockRequest } from '@ogcapi-js/test-utils';
+import { FeatureService, FilterLang } from '../../src/index';
 
 test('getConformance() should return a list of conformances', async function() {
   mockRequest('https://service.com/conformance?f=json', {
     conformsTo: ['test'],
   });
 
-  const service = new Service({
+  const service = new FeatureService({
     baseUrl: 'https://service.com',
   });
   const result = await service.getConformance();
@@ -18,7 +18,7 @@ test('getCollections() should return a list of collections', async function() {
     collections: [{ id: 'test', links: [] }],
   });
 
-  const service = new Service({
+  const service = new FeatureService({
     baseUrl: 'https://service.com',
   });
   const result = await service.getCollections();
@@ -31,7 +31,7 @@ test('getCollection() should return a collection', async function() {
     links: [],
   });
 
-  const service = new Service({
+  const service = new FeatureService({
     baseUrl: 'https://service.com',
   });
   const result = await service.getCollection('test');
@@ -56,7 +56,7 @@ test('getQueryables() should return queryables for collection', async function()
     $id: 'https://service.com/collections/test/queryables',
   });
 
-  const service = new Service({
+  const service = new FeatureService({
     baseUrl: 'https://service.com',
   });
   const result = await service.getQueryables('test');
@@ -102,7 +102,7 @@ test('getFeatures() should fetch features with parameters', async function() {
     }
   );
 
-  const service = new Service({
+  const service = new FeatureService({
     baseUrl: 'https://service.com',
   });
   const result = await service.getFeatures('test', {
@@ -128,7 +128,7 @@ test('getFeature() should fetch a feature', async function() {
     geometry: {},
   });
 
-  const service = new Service({
+  const service = new FeatureService({
     baseUrl: 'https://service.com',
   });
   const result = await service.getFeature('test', 'a');
@@ -153,7 +153,7 @@ test('getFeature() should fetch a feature with parameters', async function() {
     }
   );
 
-  const service = new Service({
+  const service = new FeatureService({
     baseUrl: 'https://service.com',
   });
   const result = await service.getFeature('test', 'a', {
@@ -180,7 +180,7 @@ test('it could use a relative path for a local service', async function() {
     }
   );
 
-  const service = new Service({
+  const service = new FeatureService({
     baseUrl: '/my-service',
   });
   const result = await service.getFeature('test', 'a', {
