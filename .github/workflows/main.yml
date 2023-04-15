@@ -1,0 +1,37 @@
+name: main
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 'lts/*'
+        cache: npm
+    - name: Install dependencies
+      run: npm ci
+    - name: Build
+      run: npm run build
+    - name: Unit test
+      run: npm test
+    - name: E2E test
+      if: ${{ github.ref_name == 'master' }}
+      run: npm run test:e2e
+    - name: Build doc
+      if: ${{ github.ref_name == 'master' }}
+      run: npm run build:doc
+    - name: Deploy doc
+      if: ${{ github.ref_name == 'master' }}
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: doc
