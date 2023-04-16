@@ -1,7 +1,5 @@
 # ogcapi-js
 
-![build](https://github.com/haoliangyu/ogcapi-js/workflows/build/badge.svg)
-
 A lightweight and modular JavaScript library for [OGC APIs](https://ogcapi.ogc.org/) that implements:
 
 * [@ogcapi-js/features](./packages/features)

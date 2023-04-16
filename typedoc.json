@@ -2,8 +2,14 @@
   "name": "ogcapi-js",
   "out": "doc",
   "theme": "default",
-  "exclude": [
-    "packages/**/test/**/*.ts"
+  "entryPoints": [
+    "."
   ],
-  "excludeExternals": false
+  "exclude": [
+    "packages/**/test/**/*.ts",
+    "packages/processes",
+    "packages/test-utils"
+  ],
+  "excludeExternals": false,
+  "entryPointStrategy": "packages"
 }

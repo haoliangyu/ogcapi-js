@@ -5,7 +5,7 @@
     "ncu": "node scripts/ncu.js",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "build:doc": "typedoc packages/features/src/index.ts && open-cli doc/index.html",
+    "build:doc": "typedoc && open-cli doc/index.html",
     "test": "lerna run test",
     "test:e2e": "lerna run test:e2e",
     "lint": "lerna run lint",
@@ -31,7 +31,7 @@
     "lerna": "^6.4.1",
     "npm-check-updates": "^16.4.3",
     "open-cli": "^7.0.1",
-    "typedoc": "^0.20.23",
+    "typedoc": "^0.24.1",
     "typescript": "^4.1.3"
   },
   "workspaces": [
