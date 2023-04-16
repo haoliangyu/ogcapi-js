@@ -17,7 +17,7 @@ test('request() should throw the request error', async () => {
     await request('https://www.example.com');
     expect(true).toBe(false);
   } catch (error) {
-    expect(error.message).toBe('Internal Server Error');
+    expect((error as Error).message).toBe('Internal Server Error');
   }
 });
 
