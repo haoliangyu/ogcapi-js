@@ -3,10 +3,11 @@
  * @param url
  * @param params
  */
-export async function request(
-  url: string,
-  params: IRequestParams = {}
-): Promise<any> {
+export async function request({
+  url,
+  params = {},
+  method = 'GET',
+}: IRequestOptions): Promise<any> {
   const searchParams = new URLSearchParams();
   searchParams.append('f', 'json');
 
@@ -14,8 +15,12 @@ export async function request(
     searchParams.append(key, params[key].toString());
   }
 
-  const res: Response = await fetch(`${url}?${searchParams.toString()}`, {
-    method: 'GET',
+  const isGet = method === 'GET';
+  const fetchUrl = isGet ? `${url}?${searchParams.toString()}` : url;
+  const body = !isGet ? searchParams : undefined;
+  const res: Response = await fetch(fetchUrl, {
+    method,
+    body,
   });
 
   if (!res.ok) {
@@ -27,4 +32,10 @@ export async function request(
 
 export interface IRequestParams {
   [key: string]: any;
+}
+
+export interface IRequestOptions {
+  url: string;
+  params?: IRequestParams
+  method?: 'GET' | 'POST';
 }
