@@ -59,7 +59,10 @@ export class FeatureService {
     options: IRequestOptions = {}
   ): Promise<IGetConformanceResponse> {
     const url: string = `${this._baseUrl}/conformance`;
-    const result: IGetConformanceResponse = await request(url, options.params);
+    const result: IGetConformanceResponse = await request({
+      url,
+      params: options.params,
+    });
     return result;
   }
 
@@ -71,7 +74,10 @@ export class FeatureService {
     options: IRequestOptions = {}
   ): Promise<IGetCollectionsResponse> {
     const url: string = `${this._baseUrl}/collections`;
-    const result: IGetCollectionsResponse = await request(url, options.params);
+    const result: IGetCollectionsResponse = await request({
+      url,
+      params: options.params,
+    });
     return result;
   }
 
@@ -85,7 +91,7 @@ export class FeatureService {
     options: IRequestOptions = {}
   ): Promise<ICollection> {
     const url: string = `${this._baseUrl}/collections/${collectionId}`;
-    const result: ICollection = await request(url, options.params);
+    const result: ICollection = await request({ url, params: options.params });
     return result;
   }
 
@@ -99,12 +105,12 @@ export class FeatureService {
     options: IRequestOptions = {}
   ): Promise<IQueryables> {
     const url: string = `${this._baseUrl}/collections/${collectionId}/queryables`;
-    const result: IQueryables = await request(url, options.params);
+    const result: IQueryables = await request({ url, params: options.params });
     return result;
   }
 
   /**
-   * Get features from a collection by id
+   * Get features from a collection
    * @param collectionId  collection id
    * @param options       options
    */
@@ -112,57 +118,31 @@ export class FeatureService {
     collectionId: string,
     options: IGetFeaturesOptions = {}
   ): Promise<IGetFeaturesResponse> {
-    const requestParams: IRequestParams = Object.assign({}, options.params);
-
-    if (options.crs) {
-      requestParams.crs = stringifyBboxCrs(options.crs);
-    }
-
-    if (options.bbox) {
-      requestParams.bbox = stringifyBbox(options.bbox);
-
-      if (options.bboxCrs) {
-        requestParams['bbox-crs'] = stringifyBboxCrs(options.bboxCrs);
-      }
-    }
-
-    if (options.datetime) {
-      requestParams.datetime = stringifyDatetime(options.datetime);
-    }
-
-    if (options.properties) {
-      requestParams.properties = stringifyProperties(options.properties);
-    }
-
-    if (options.sortby) {
-      requestParams.sortby = stringifySortBy(options.sortby);
-    }
-
-    if (options.filter) {
-      const { filter, filterCrs, filterLang } = stringifyFilter({
-        filter: options.filter,
-        filterCrs: options.filterCrs,
-        filterLang: options.filterLang,
-      });
-
-      requestParams.filter = filter;
-
-      if (filterLang) {
-        requestParams['filter-lang'] = filterLang;
-      }
-
-      if (filterCrs) {
-        requestParams['filter-crs'] = filterCrs;
-      }
-    }
-
-    // should take care of 0
-    if ('limit' in options) {
-      requestParams.limit = options.limit;
-    }
-
+    const params = toGetFeaturesRequestParams(options);
     const url: string = `${this._baseUrl}/collections/${collectionId}/items`;
-    const result: IGetFeaturesResponse = await request(url, requestParams);
+    const result: IGetFeaturesResponse = await request({
+      url,
+      params,
+    });
+    return result;
+  }
+
+  /**
+   * Search features from a collection
+   * @param collectionId  collection id
+   * @param featureId     feature id
+   */
+  async searchFeatures(
+    collectionId: string,
+    options: IGetFeaturesOptions = {}
+  ): Promise<IGetFeaturesResponse> {
+    const params = toGetFeaturesRequestParams(options);
+    const url: string = `${this._baseUrl}/collections/${collectionId}/search`;
+    const result: IGetFeaturesResponse = await request({
+      url,
+      params,
+      method: 'POST',
+    });
     return result;
   }
 
@@ -177,14 +157,9 @@ export class FeatureService {
     featureId: string,
     options: IGetFeatureOptions = {}
   ): Promise<IFeature> {
+    const params = toGetFeatureRequestParams(options);
     const url: string = `${this._baseUrl}/collections/${collectionId}/items/${featureId}`;
-    const requestParams: IRequestParams = Object.assign({}, options.params);
-
-    if (options.crs) {
-      requestParams.crs = stringifyCrs(options.crs);
-    }
-
-    const result: IFeature = await request(url, requestParams);
+    const result: IFeature = await request({ url, params });
     return result;
   }
 }
@@ -409,4 +384,79 @@ export interface IGetFeatureOptions extends IRequestOptions {
    * return CRS for the requested feature
    */
   crs?: string;
+}
+
+
+/**
+ * utility, which stringifies IGetFeatureOptions.
+ *
+ * @internal
+ */
+function toGetFeatureRequestParams(options: IGetFeatureOptions) {
+  const params: IRequestParams = Object.assign({}, options.params);
+
+  if (options.crs) {
+    params.crs = stringifyCrs(options.crs);
+  }
+
+  return params;
+}
+
+
+/**
+ * utility, which stringifies IGetFeaturesOptions.
+ *
+ * @internal
+ */
+function toGetFeaturesRequestParams(options: IGetFeaturesOptions) {
+  const params: IRequestParams = Object.assign({}, options.params);
+
+  if (options.crs) {
+    params.crs = stringifyBboxCrs(options.crs);
+  }
+
+  if (options.bbox) {
+    params.bbox = stringifyBbox(options.bbox);
+
+    if (options.bboxCrs) {
+      params['bbox-crs'] = stringifyBboxCrs(options.bboxCrs);
+    }
+  }
+
+  if (options.datetime) {
+    params.datetime = stringifyDatetime(options.datetime);
+  }
+
+  if (options.properties) {
+    params.properties = stringifyProperties(options.properties);
+  }
+
+  if (options.sortby) {
+    params.sortby = stringifySortBy(options.sortby);
+  }
+
+  if (options.filter) {
+    const { filter, filterCrs, filterLang } = stringifyFilter({
+      filter: options.filter,
+      filterCrs: options.filterCrs,
+      filterLang: options.filterLang,
+    });
+
+    params.filter = filter;
+
+    if (filterLang) {
+      params['filter-lang'] = filterLang;
+    }
+
+    if (filterCrs) {
+      params['filter-crs'] = filterCrs;
+    }
+  }
+
+  // should take care of 0
+  if ('limit' in options) {
+    params.limit = options.limit;
+  }
+
+  return params;
 }
