@@ -15,6 +15,7 @@ export async function request({
   const res: Response = await fetch(fetchUrl, {
     method,
     body,
+    headers,
   });
 
   if (!res.ok) {
