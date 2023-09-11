@@ -57,3 +57,55 @@ test('request() should accept date formatted parameter', async () => {
   });
   expect(result.success).toBe(true);
 });
+
+test('request() should forward headers ', async () => {
+  mockRequest(
+    'https://www.example.com',
+    {
+      success: true,
+    },
+    {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+        'accept-language': '*',
+      }
+    }
+  );
+
+  const result = await request({
+    url: 'https://www.example.com',
+    method: 'POST',
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+      'accept-language': '*',
+    }
+  });
+  expect(result.success).toBe(true);
+});
+
+test('request() should send JSON when content-type header is application/json ', async () => {
+  mockRequest(
+    'https://www.example.com',
+    {
+      success: true,
+    },
+    {
+      method: 'POST',
+      body: { f: 'json' },
+      headers: {
+        'content-type': 'application/json',
+      }
+    }
+  );
+
+  const result = await request({
+    url: 'https://www.example.com',
+    method: 'POST',
+    params: { f: 'json' },
+    headers: {
+      'content-type': 'application/json',
+    }
+  });
+  expect(result.success).toBe(true);
+});
