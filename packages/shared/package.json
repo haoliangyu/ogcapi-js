@@ -1,7 +1,6 @@
 {
   "name": "@ogcapi-js/shared",
   "version": "0.4.1",
-  "private": true,
   "description": "A shared javascript library used by ogcapi-js packages",
   "author": "Haoliang Yu <haoliang.yu@outlook.com>",
   "contributors": [],
