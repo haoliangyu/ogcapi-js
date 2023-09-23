@@ -43,10 +43,12 @@ function toBody(params: IRequestParams, headers: IRequestHeaders) {
 
 function getContentType(headers: IRequestHeaders): string {
   const contentType = Object.keys(headers)
-    .filter((header) => header.toLowerCase() === CONTENT_TYPE_HEADER)
+    .filter(header => header.toLowerCase() === CONTENT_TYPE_HEADER)
     .map(header => headers[header])[0];
 
-  return typeof contentType === 'string' ? contentType : APPLICATION_X_WWW_FORM_URLENCODED;
+  return typeof contentType === 'string'
+    ? contentType
+    : APPLICATION_X_WWW_FORM_URLENCODED;
 }
 
 function toSearchParams(params: IRequestParams) {

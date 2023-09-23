@@ -69,7 +69,7 @@ test('request() should forward headers ', async () => {
       headers: {
         'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
         'accept-language': '*',
-      }
+      },
     }
   );
 
@@ -79,7 +79,7 @@ test('request() should forward headers ', async () => {
     headers: {
       'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
       'accept-language': '*',
-    }
+    },
   });
   expect(result.success).toBe(true);
 });
@@ -95,7 +95,7 @@ test('request() should send JSON when content-type header is application/json ',
       body: { f: 'json' },
       headers: {
         'content-type': 'application/json',
-      }
+      },
     }
   );
 
@@ -105,7 +105,7 @@ test('request() should send JSON when content-type header is application/json ',
     params: { f: 'json' },
     headers: {
       'content-type': 'application/json',
-    }
+    },
   });
   expect(result.success).toBe(true);
 });

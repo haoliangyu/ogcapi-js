@@ -387,7 +387,6 @@ export interface IGetFeatureOptions extends IRequestOptions {
   crs?: string;
 }
 
-
 /**
  * utility, which stringifies IGetFeatureOptions.
  *
@@ -402,7 +401,6 @@ function toGetFeatureRequestParams(options: IGetFeatureOptions) {
 
   return params;
 }
-
 
 /**
  * utility, which stringifies IGetFeaturesOptions.
