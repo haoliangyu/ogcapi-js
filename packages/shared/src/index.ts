@@ -5,3 +5,4 @@ export * from './datetime';
 export * from './properties';
 export * from './sortby';
 export * from './filter';
+export * from './service';

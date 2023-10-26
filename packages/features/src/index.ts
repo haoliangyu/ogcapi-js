@@ -5,6 +5,7 @@ import {
   TFilter,
   TSortBy,
   request,
+  IServiceRequestOptions,
   stringifyBbox,
   stringifyBboxCrs,
   stringifyCrs,
@@ -12,6 +13,9 @@ import {
   stringifyFilter,
   stringifyProperties,
   stringifySortBy,
+  Service,
+  IServiceConfig,
+  ILink,
 } from '@ogcapi-js/shared';
 import { Feature, FeatureCollection } from 'geojson';
 import { JSONSchema7 } from 'json-schema';
@@ -26,52 +30,24 @@ export {
   TFilter,
   TSortBy,
   TTextFilter,
+  ILink,
 } from '@ogcapi-js/shared';
 
 /**
  * configuration for a OGC Features API service
  */
-export interface IFeatureServiceConfig {
-  /**
-   * service base url
-   */
-  baseUrl: string;
-}
+export interface IFeatureServiceConfig extends IServiceConfig {}
 
 /**
  * OGC Features API service class
  */
-export class FeatureService {
-  private _baseUrl: string;
-
-  /**
-   * constructor
-   */
-  constructor(config: IFeatureServiceConfig) {
-    this._baseUrl = config.baseUrl;
-  }
-
-  /**
-   * Get a list of conformed standards
-   * @param options       options
-   */
-  async getConformance(
-    options: IRequestOptions = {}
-  ): Promise<IGetConformanceResponse> {
-    const url: string = `${this._baseUrl}/conformance`;
-    const result: IGetConformanceResponse = await request({
-      url,
-      params: options.params,
-    });
-    return result;
-  }
-
+export class FeatureService extends Service {
   /**
    * Get a list of feature collections
-   * @param options       options
+   * @param options options
    */
   async getCollections(
-    options: IRequestOptions = {}
+    options: IServiceRequestOptions = {}
   ): Promise<IGetCollectionsResponse> {
     const url: string = `${this._baseUrl}/collections`;
     const result: IGetCollectionsResponse = await request({
@@ -84,11 +60,11 @@ export class FeatureService {
   /**
    * Get a feature collection by id
    * @param collectionId collection id
-   * @param options       options
+   * @param options options
    */
   async getCollection(
     collectionId: string,
-    options: IRequestOptions = {}
+    options: IServiceRequestOptions = {}
   ): Promise<ICollection> {
     const url: string = `${this._baseUrl}/collections/${collectionId}`;
     const result: ICollection = await request({ url, params: options.params });
@@ -98,11 +74,11 @@ export class FeatureService {
   /**
    * Get queryables from a collection by id
    * @param collectionId collection id
-   * @param options       options
+   * @param options options
    */
   async getQueryables(
     collectionId: string,
-    options: IRequestOptions = {}
+    options: IServiceRequestOptions = {}
   ): Promise<IQueryables> {
     const url: string = `${this._baseUrl}/collections/${collectionId}/queryables`;
     const result: IQueryables = await request({ url, params: options.params });
@@ -111,8 +87,8 @@ export class FeatureService {
 
   /**
    * Get features from a collection
-   * @param collectionId  collection id
-   * @param options       options
+   * @param collectionId collection id
+   * @param options options
    */
   async getFeatures(
     collectionId: string,
@@ -129,8 +105,8 @@ export class FeatureService {
 
   /**
    * Search features from a collection
-   * @param collectionId  collection id
-   * @param featureId     feature id
+   * @param collectionId collection id
+   * @param featureId feature id
    */
   async searchFeatures(
     collectionId: string,
@@ -149,9 +125,9 @@ export class FeatureService {
 
   /**
    * Get a feature from a collection by id
-   * @param collectionId  collection id
-   * @param featureId     feature id
-   * @param options       options
+   * @param collectionId collection id
+   * @param featureId feature id
+   * @param options options
    */
   async getFeature(
     collectionId: string,
@@ -163,16 +139,6 @@ export class FeatureService {
     const result: IFeature = await request({ url, params });
     return result;
   }
-}
-
-/**
- * request options
- */
-export interface IRequestOptions {
-  /**
-   * additional request parameters
-   */
-  params?: IRequestParams;
 }
 
 /**
@@ -246,41 +212,6 @@ export interface IFeature extends Feature {
 }
 
 /**
- * link
- */
-export interface ILink {
-  /**
-   * link href
-   */
-  href: string;
-
-  /**
-   * link ref
-   */
-  rel: string;
-
-  /**
-   * link type
-   */
-  type: string;
-
-  /**
-   * link title
-   */
-  title: string;
-}
-
-/**
- * response for the get conformance request
- */
-export interface IGetConformanceResponse {
-  /**
-   * conform array
-   */
-  conformsTo: string[];
-}
-
-/**
  * response for the get collections request
  */
 export interface IGetCollectionsResponse {
@@ -303,7 +234,7 @@ export interface IGetCollectionsResponse {
 /**
  * request parameters to get features from a collection
  */
-export interface IGetFeaturesOptions extends IRequestOptions {
+export interface IGetFeaturesOptions extends IServiceRequestOptions {
   /**
    * number of features to return
    */
@@ -380,7 +311,7 @@ export interface IGetFeaturesResponse extends IFeatures {
   numberReturned: number;
 }
 
-export interface IGetFeatureOptions extends IRequestOptions {
+export interface IGetFeatureOptions extends IServiceRequestOptions {
   /**
    * return CRS for the requested feature
    */
