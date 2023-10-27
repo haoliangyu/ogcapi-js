@@ -1,6 +1,8 @@
 import { mockRequest } from '@ogcapi-js/test-utils';
 import { request } from '../../src/request';
 
+require('isomorphic-fetch');
+
 test('request() should send a GET request with f=json', async () => {
   mockRequest('https://www.example.com?f=json', {
     success: true,
@@ -108,4 +110,40 @@ test('request() should send JSON when content-type header is application/json ',
     },
   });
   expect(result.success).toBe(true);
+});
+
+test('request() should handle DELETE request', async () => {
+  mockRequest(
+    'https://www.example.com/jobs/1?f=json',
+    {
+      success: true,
+    },
+    {
+      method: 'DELETE',
+    }
+  );
+
+  const result = await request({
+    url: 'https://www.example.com/jobs/1',
+    method: 'DELETE',
+  });
+  expect(result).toEqual({
+    success: true,
+  });
+});
+
+test('request() should not read body of DELETE request when response status is 204', async () => {
+  mockRequest(
+    'https://www.example.com/jobs/1?f=json',
+    new Response(null, { status: 204 }),
+    {
+      method: 'DELETE',
+    }
+  );
+
+  const result = await request({
+    url: 'https://www.example.com/jobs/1',
+    method: 'DELETE',
+  });
+  expect(result).toBeUndefined();
 });
