@@ -1,5 +1,5 @@
 import { mockRequest } from '@ogcapi-js/test-utils';
-import { FeatureService, FilterLang } from '../../src/index';
+import { FeatureService, FilterLang } from '../../src/features';
 
 test('getConformance() should return a list of conformances', async function() {
   mockRequest('https://service.com/conformance?f=json', {

@@ -1,4 +1,4 @@
-import { FeatureService, ICollection } from '../../src/index';
+import { FeatureService, ICollection } from '../../src/features';
 
 require('isomorphic-fetch');
 
