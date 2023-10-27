@@ -20,7 +20,11 @@ function toDate(date: TDateLike) {
 }
 
 function isDateLike(value: any): value is TDateLike {
-  return typeof value === 'string' || typeof value === 'number' || value instanceof Date;
+  return (
+    typeof value === 'string' ||
+    typeof value === 'number' ||
+    value instanceof Date
+  );
 }
 
 function isValidDate(date: TDateLike) {
@@ -28,7 +32,7 @@ function isValidDate(date: TDateLike) {
 }
 
 function stringifyDate(value: TDateLike) {
-  return toDate(value).toISOString()
+  return toDate(value).toISOString();
 }
 
 export function isValidDatetime(value: TDateLike | IDateRange): boolean {

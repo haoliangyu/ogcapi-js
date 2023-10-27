@@ -106,11 +106,14 @@ export class ProcessesService extends Service {
    * @param jobId: job id
    * @param options options
    */
-  async getJob(jobId: string, options: IServiceRequestOptions = {}): Promise<IJobInfo> {
+  async getJob(
+    jobId: string,
+    options: IServiceRequestOptions = {}
+  ): Promise<IJobInfo> {
     const url: string = `${this._baseUrl}/jobs/${jobId}`;
     const params: IRequestParams = Object.assign({}, options.params);
     const result: IJobInfo = await request({ url, params });
-    return result
+    return result;
   }
 
   /**
@@ -121,11 +124,14 @@ export class ProcessesService extends Service {
    * @param jobId: job id
    * @param options options
    */
-  async getJobResults(jobId: string, options: IServiceRequestOptions = {}): Promise<TJobResult> {
+  async getJobResults(
+    jobId: string,
+    options: IServiceRequestOptions = {}
+  ): Promise<TJobResult> {
     const url: string = `${this._baseUrl}/jobs/${jobId}`;
     const params: IRequestParams = Object.assign({}, options.params);
     const result: TJobResult = await request({ url, params });
-    return result
+    return result;
   }
 
   /**
@@ -133,11 +139,14 @@ export class ProcessesService extends Service {
    * @param jobId: job id
    * @param options options
    */
-  async dismissJob(jobId: string, options: IServiceRequestOptions = {}): Promise<IJobInfo> {
+  async dismissJob(
+    jobId: string,
+    options: IServiceRequestOptions = {}
+  ): Promise<IJobInfo> {
     const url: string = `${this._baseUrl}/jobs/${jobId}`;
     const params: IRequestParams = Object.assign({}, options.params);
     const result: IJobInfo = await request({ url, params, method: 'DELETE' });
-    return result
+    return result;
   }
 }
 
@@ -379,9 +388,10 @@ export interface IGetProcessesRequest extends IServiceRequestOptions {
  * bbox value
  */
 export type TProcessBBoxValue = {
-  bbox:
-    | [number, number, number, number]
-    | [number, number, number, number, number, number];
+  bbox: number[];
+  // tuples can not be used with tsdx @see https://github.com/jaredpalmer/tsdx/issues/1033#issuecomment-977135211
+  // | readonly [number, number, number, number]
+  // | readonly [number, number, number, number, number, number];
   crs: string;
 };
 

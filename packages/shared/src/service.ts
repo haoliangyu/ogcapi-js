@@ -1,4 +1,4 @@
-import { IRequestParams, request } from "./request";
+import { IRequestParams, request } from './request';
 
 /**
  * link
@@ -24,7 +24,6 @@ export interface ILink {
    */
   title: string;
 }
-
 
 export interface IServiceConfig {
   baseUrl: string;

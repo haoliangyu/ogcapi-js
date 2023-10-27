@@ -1,5 +1,5 @@
 import { mockRequest } from '@ogcapi-js/test-utils';
-import { IJobInfo, IJobsResponse, IProcess, IProcessesResponse, ProcessesService, TAsyncJobResult, TJobResult, TSyncJobResult } from '../../src/processes';
+import { ProcessesService } from '../../src/processes';
 
 test('getConformance() should return a list of conformances', async function() {
   mockRequest('https://service.com/conformance?f=json', {
@@ -28,7 +28,7 @@ test('getProcesses() should return a list of processes', async function() {
       },
     ],
     links: [],
-  } satisfies IProcessesResponse);
+  });
 
   const service = new ProcessesService({
     baseUrl: 'https://service.com',
@@ -64,7 +64,8 @@ test('getProcess() should return a single process', async function() {
     inputs: {
       geometryInput: {
         title: 'Geometry input',
-        description: 'This is an example of a geometry input.  In this case the geometry can be expressed as a GML of GeoJSON geometry.',
+        description:
+          'This is an example of a geometry input.  In this case the geometry can be expressed as a GML of GeoJSON geometry.',
         minOccurs: 2,
         maxOccurs: 5,
         schema: {
@@ -72,10 +73,12 @@ test('getProcess() should return a single process', async function() {
             {
               type: 'string',
               contentMediaType: 'application/gml+xml; version=3.2',
-              contentSchema: 'http://schemas.opengis.net/gml/3.2.1/geometryBasic2d.xsd'
+              contentSchema:
+                'http://schemas.opengis.net/gml/3.2.1/geometryBasic2d.xsd',
             },
             {
-              $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/geometryGeoJSON.json'
+              $ref:
+                'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/geometryGeoJSON.json',
             },
           ],
         },
@@ -84,16 +87,17 @@ test('getProcess() should return a single process', async function() {
     outputs: {
       geometryOutput: {
         schema: {
-          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/geometryGeoJSON.json'
+          $ref:
+            'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/geometryGeoJSON.json',
         },
       },
     },
-  } satisfies IProcess);
+  });
 
   const service = new ProcessesService({
     baseUrl: 'https://service.com',
   });
-  const result = await service.getProcess("1");
+  const result = await service.getProcess('1');
   expect(result).toEqual({
     id: '1',
     version: '1.0.0',
@@ -106,7 +110,8 @@ test('getProcess() should return a single process', async function() {
     inputs: {
       geometryInput: {
         title: 'Geometry input',
-        description: 'This is an example of a geometry input.  In this case the geometry can be expressed as a GML of GeoJSON geometry.',
+        description:
+          'This is an example of a geometry input.  In this case the geometry can be expressed as a GML of GeoJSON geometry.',
         minOccurs: 2,
         maxOccurs: 5,
         schema: {
@@ -114,10 +119,12 @@ test('getProcess() should return a single process', async function() {
             {
               type: 'string',
               contentMediaType: 'application/gml+xml; version=3.2',
-              contentSchema: 'http://schemas.opengis.net/gml/3.2.1/geometryBasic2d.xsd'
+              contentSchema:
+                'http://schemas.opengis.net/gml/3.2.1/geometryBasic2d.xsd',
             },
             {
-              $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/geometryGeoJSON.json'
+              $ref:
+                'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/geometryGeoJSON.json',
             },
           ],
         },
@@ -126,7 +133,8 @@ test('getProcess() should return a single process', async function() {
     outputs: {
       geometryOutput: {
         schema: {
-          $ref: 'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/geometryGeoJSON.json'
+          $ref:
+            'http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/geometryGeoJSON.json',
         },
       },
     },
@@ -142,12 +150,12 @@ test('executeProcess({ mode: async }) should return an async job result', async 
       type: 'process',
       created: '2023-10-27T09:01:58.151Z',
       links: [],
-    } satisfies TAsyncJobResult,
+    },
     {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'prefer': 'respond-async',
+        prefer: 'respond-async',
       },
       body: {
         inputs: {
@@ -156,15 +164,15 @@ test('executeProcess({ mode: async }) should return an async job result', async 
               type: 'Polygon',
               coordinates: [
                 [
-                  [ -176.5814819, -44.10896301 ],
-                  [ -176.5818024, -44.10964584 ],
-                  [ -176.5844116, -44.11236572 ],
-                  [ -176.5935974, -44.11021805 ],
-                  [ -176.5973511, -44.10743332 ],
-                  [ -176.5950928, -44.10562134 ],
-                  [ -176.5858459, -44.1043396  ],
-                  [ -176.5811157, -44.10667801 ],
-                  [ -176.5814819, -44.10896301 ],
+                  [-176.5814819, -44.10896301],
+                  [-176.5818024, -44.10964584],
+                  [-176.5844116, -44.11236572],
+                  [-176.5935974, -44.11021805],
+                  [-176.5973511, -44.10743332],
+                  [-176.5950928, -44.10562134],
+                  [-176.5858459, -44.1043396],
+                  [-176.5811157, -44.10667801],
+                  [-176.5814819, -44.10896301],
                 ],
               ],
             },
@@ -177,7 +185,7 @@ test('executeProcess({ mode: async }) should return an async job result', async 
           },
         },
       },
-    },
+    }
   );
 
   const service = new ProcessesService({
@@ -191,15 +199,15 @@ test('executeProcess({ mode: async }) should return an async job result', async 
           type: 'Polygon',
           coordinates: [
             [
-              [ -176.5814819, -44.10896301 ],
-              [ -176.5818024, -44.10964584 ],
-              [ -176.5844116, -44.11236572 ],
-              [ -176.5935974, -44.11021805 ],
-              [ -176.5973511, -44.10743332 ],
-              [ -176.5950928, -44.10562134 ],
-              [ -176.5858459, -44.1043396  ],
-              [ -176.5811157, -44.10667801 ],
-              [ -176.5814819, -44.10896301 ],
+              [-176.5814819, -44.10896301],
+              [-176.5818024, -44.10964584],
+              [-176.5844116, -44.11236572],
+              [-176.5935974, -44.11021805],
+              [-176.5973511, -44.10743332],
+              [-176.5950928, -44.10562134],
+              [-176.5858459, -44.1043396],
+              [-176.5811157, -44.10667801],
+              [-176.5814819, -44.10896301],
             ],
           ],
         },
@@ -230,21 +238,21 @@ test('executeProcess({ mode: sync }) should return a sync job result', async fun
           type: 'Polygon',
           coordinates: [
             [
-              [ -176.5814819, -44.10896301 ],
-              [ -176.5818024, -44.10964584 ],
-              [ -176.5844116, -44.11236572 ],
-              [ -176.5935974, -44.11021805 ],
-              [ -176.5973511, -44.10743332 ],
-              [ -176.5950928, -44.10562134 ],
-              [ -176.5858459, -44.1043396  ],
-              [ -176.5811157, -44.10667801 ],
-              [ -176.5814819, -44.10896301 ],
+              [-176.5814819, -44.10896301],
+              [-176.5818024, -44.10964584],
+              [-176.5844116, -44.11236572],
+              [-176.5935974, -44.11021805],
+              [-176.5973511, -44.10743332],
+              [-176.5950928, -44.10562134],
+              [-176.5858459, -44.1043396],
+              [-176.5811157, -44.10667801],
+              [-176.5814819, -44.10896301],
             ],
           ],
         },
         mediaType: 'application/geo+json',
       },
-    } satisfies TSyncJobResult,
+    },
     {
       method: 'POST',
       headers: {
@@ -257,15 +265,15 @@ test('executeProcess({ mode: sync }) should return a sync job result', async fun
               type: 'Polygon',
               coordinates: [
                 [
-                  [ -176.5814819, -44.10896301 ],
-                  [ -176.5818024, -44.10964584 ],
-                  [ -176.5844116, -44.11236572 ],
-                  [ -176.5935974, -44.11021805 ],
-                  [ -176.5973511, -44.10743332 ],
-                  [ -176.5950928, -44.10562134 ],
-                  [ -176.5858459, -44.1043396  ],
-                  [ -176.5811157, -44.10667801 ],
-                  [ -176.5814819, -44.10896301 ],
+                  [-176.5814819, -44.10896301],
+                  [-176.5818024, -44.10964584],
+                  [-176.5844116, -44.11236572],
+                  [-176.5935974, -44.11021805],
+                  [-176.5973511, -44.10743332],
+                  [-176.5950928, -44.10562134],
+                  [-176.5858459, -44.1043396],
+                  [-176.5811157, -44.10667801],
+                  [-176.5814819, -44.10896301],
                 ],
               ],
             },
@@ -278,7 +286,7 @@ test('executeProcess({ mode: sync }) should return a sync job result', async fun
           },
         },
       },
-    },
+    }
   );
 
   const service = new ProcessesService({
@@ -292,15 +300,15 @@ test('executeProcess({ mode: sync }) should return a sync job result', async fun
           type: 'Polygon',
           coordinates: [
             [
-              [ -176.5814819, -44.10896301 ],
-              [ -176.5818024, -44.10964584 ],
-              [ -176.5844116, -44.11236572 ],
-              [ -176.5935974, -44.11021805 ],
-              [ -176.5973511, -44.10743332 ],
-              [ -176.5950928, -44.10562134 ],
-              [ -176.5858459, -44.1043396  ],
-              [ -176.5811157, -44.10667801 ],
-              [ -176.5814819, -44.10896301 ],
+              [-176.5814819, -44.10896301],
+              [-176.5818024, -44.10964584],
+              [-176.5844116, -44.11236572],
+              [-176.5935974, -44.11021805],
+              [-176.5973511, -44.10743332],
+              [-176.5950928, -44.10562134],
+              [-176.5858459, -44.1043396],
+              [-176.5811157, -44.10667801],
+              [-176.5814819, -44.10896301],
             ],
           ],
         },
@@ -319,15 +327,15 @@ test('executeProcess({ mode: sync }) should return a sync job result', async fun
         type: 'Polygon',
         coordinates: [
           [
-            [ -176.5814819, -44.10896301 ],
-            [ -176.5818024, -44.10964584 ],
-            [ -176.5844116, -44.11236572 ],
-            [ -176.5935974, -44.11021805 ],
-            [ -176.5973511, -44.10743332 ],
-            [ -176.5950928, -44.10562134 ],
-            [ -176.5858459, -44.1043396  ],
-            [ -176.5811157, -44.10667801 ],
-            [ -176.5814819, -44.10896301 ],
+            [-176.5814819, -44.10896301],
+            [-176.5818024, -44.10964584],
+            [-176.5844116, -44.11236572],
+            [-176.5935974, -44.11021805],
+            [-176.5973511, -44.10743332],
+            [-176.5950928, -44.10562134],
+            [-176.5858459, -44.1043396],
+            [-176.5811157, -44.10667801],
+            [-176.5814819, -44.10896301],
           ],
         ],
       },
@@ -338,32 +346,36 @@ test('executeProcess({ mode: sync }) should return a sync job result', async fun
 
 test('getJobs() should return a list of jobs', async function() {
   mockRequest('https://service.com/jobs?f=json', {
-    jobs: [{
-      jobID: '1',
-      status: 'accepted',
-      type: 'process',
-      created: '2023-10-27T09:01:58.151Z',
-      message: '',
-      finished: '2023-10-27T09:03:52.120Z',
-      links: [],
-    }],
+    jobs: [
+      {
+        jobID: '1',
+        status: 'accepted',
+        type: 'process',
+        created: '2023-10-27T09:01:58.151Z',
+        message: '',
+        finished: '2023-10-27T09:03:52.120Z',
+        links: [],
+      },
+    ],
     links: [],
-  } satisfies IJobsResponse);
+  });
 
   const service = new ProcessesService({
     baseUrl: 'https://service.com',
   });
   const result = await service.getJobs();
   expect(result).toEqual({
-    jobs: [{
-      jobID: '1',
-      status: 'accepted',
-      type: 'process',
-      created: '2023-10-27T09:01:58.151Z',
-      message: '',
-      finished: '2023-10-27T09:03:52.120Z',
-      links: [],
-    }],
+    jobs: [
+      {
+        jobID: '1',
+        status: 'accepted',
+        type: 'process',
+        created: '2023-10-27T09:01:58.151Z',
+        message: '',
+        finished: '2023-10-27T09:03:52.120Z',
+        links: [],
+      },
+    ],
     links: [],
   });
 });
@@ -377,12 +389,12 @@ test('getJob() should return a single job', async function() {
     message: '',
     finished: '2023-10-27T09:03:52.120Z',
     links: [],
-  } satisfies IJobInfo);
+  });
 
   const service = new ProcessesService({
     baseUrl: 'https://service.com',
   });
-  const result = await service.getJob("1");
+  const result = await service.getJob('1');
   expect(result).toEqual({
     jobID: '1',
     status: 'accepted',
@@ -395,23 +407,20 @@ test('getJob() should return a single job', async function() {
 });
 
 test('getJob() should return a single job', async function() {
-  mockRequest(
-    'https://service.com/jobs/1?f=json',
-    {
-      jobID: '1',
-      status: 'accepted',
-      type: 'process',
-      created: '2023-10-27T09:01:58.151Z',
-      message: '',
-      finished: '2023-10-27T09:03:52.120Z',
-      links: [],
-    } satisfies IJobInfo,
-  );
+  mockRequest('https://service.com/jobs/1?f=json', {
+    jobID: '1',
+    status: 'accepted',
+    type: 'process',
+    created: '2023-10-27T09:01:58.151Z',
+    message: '',
+    finished: '2023-10-27T09:03:52.120Z',
+    links: [],
+  });
 
   const service = new ProcessesService({
     baseUrl: 'https://service.com',
   });
-  const result = await service.getJob("1");
+  const result = await service.getJob('1');
   expect(result).toEqual({
     jobID: '1',
     status: 'accepted',
@@ -427,13 +436,14 @@ test('getJobResults() should return a jobs results', async function() {
   mockRequest('https://service.com/jobs/1?f=json', {
     stringOutput: 'abc',
     numberOutput: 1234,
-    arrayOutput: [1,2,3,4,5,6],
+    arrayOutput: [1, 2, 3, 4, 5, 6],
     boundingBoxOutput: {
-      bbox: [51.9,7,52,7.1],
+      bbox: [51.9, 7, 52, 7.1],
       crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
     },
     imageOutput: {
-      href: 'https://www.someserver.com/ogcapi/Daraa/collections/Daraa_DTED/styles/Topographic/coverage?...',
+      href:
+        'https://www.someserver.com/ogcapi/Daraa/collections/Daraa_DTED/styles/Topographic/coverage?...',
       type: 'application/tiff; application=geotiff',
     },
     complexObjectOutput: {
@@ -441,43 +451,44 @@ test('getJobResults() should return a jobs results', async function() {
         property1: 'value1',
         property2: 'value2',
         property5: true,
-      }
+      },
     },
     geometryOutput: {
       value: {
         type: 'Polygon',
         coordinates: [
           [
-            [ -176.5814819, -44.10896301 ],
-            [ -176.5818024, -44.10964584 ],
-            [ -176.5844116, -44.11236572 ],
-            [ -176.5935974, -44.11021805 ],
-            [ -176.5973511, -44.10743332 ],
-            [ -176.5950928, -44.10562134 ],
-            [ -176.5858459, -44.1043396  ],
-            [ -176.5811157, -44.10667801 ],
-            [ -176.5814819, -44.10896301 ],
+            [-176.5814819, -44.10896301],
+            [-176.5818024, -44.10964584],
+            [-176.5844116, -44.11236572],
+            [-176.5935974, -44.11021805],
+            [-176.5973511, -44.10743332],
+            [-176.5950928, -44.10562134],
+            [-176.5858459, -44.1043396],
+            [-176.5811157, -44.10667801],
+            [-176.5814819, -44.10896301],
           ],
         ],
       },
       mediaType: 'application/geo+json',
     },
-  } satisfies TJobResult);
+  });
 
   const service = new ProcessesService({
     baseUrl: 'https://service.com',
   });
-  const result = await service.getJobResults("1");
+  const result = await service.getJobResults('1');
   expect(result).toEqual({
     stringOutput: 'abc',
     numberOutput: 1234,
-    arrayOutput: [1,2,3,4,5,6],
+    arrayOutput: [1, 2, 3, 4, 5, 6],
     boundingBoxOutput: {
-      bbox: [51.9,7,52,7.1],
+      bbox: [51.9, 7, 52, 7.1],
       crs: 'http://www.opengis.net/def/crs/OGC/1.3/CRS84',
     },
     imageOutput: {
-      href: 'https://www.someserver.com/ogcapi/Daraa/collections/Daraa_DTED/styles/Topographic/coverage?...',
+      href:
+        'https://www.someserver.com/ogcapi/Daraa/collections/Daraa_DTED/styles/Topographic/coverage?...',
       type: 'application/tiff; application=geotiff',
     },
     complexObjectOutput: {
@@ -485,22 +496,22 @@ test('getJobResults() should return a jobs results', async function() {
         property1: 'value1',
         property2: 'value2',
         property5: true,
-      }
+      },
     },
     geometryOutput: {
       value: {
         type: 'Polygon',
         coordinates: [
           [
-            [ -176.5814819, -44.10896301 ],
-            [ -176.5818024, -44.10964584 ],
-            [ -176.5844116, -44.11236572 ],
-            [ -176.5935974, -44.11021805 ],
-            [ -176.5973511, -44.10743332 ],
-            [ -176.5950928, -44.10562134 ],
-            [ -176.5858459, -44.1043396  ],
-            [ -176.5811157, -44.10667801 ],
-            [ -176.5814819, -44.10896301 ],
+            [-176.5814819, -44.10896301],
+            [-176.5818024, -44.10964584],
+            [-176.5844116, -44.11236572],
+            [-176.5935974, -44.11021805],
+            [-176.5973511, -44.10743332],
+            [-176.5950928, -44.10562134],
+            [-176.5858459, -44.1043396],
+            [-176.5811157, -44.10667801],
+            [-176.5814819, -44.10896301],
           ],
         ],
       },
@@ -520,16 +531,16 @@ test('dismissJob() should return dismissed job', async function() {
       message: '',
       finished: '2023-10-27T09:03:52.120Z',
       links: [],
-    } satisfies IJobInfo,
+    },
     {
       method: 'DELETE',
-    },
+    }
   );
 
   const service = new ProcessesService({
     baseUrl: 'https://service.com',
   });
-  const result = await service.dismissJob("1");
+  const result = await service.dismissJob('1');
   expect(result).toEqual({
     jobID: '1',
     status: 'dismissed',

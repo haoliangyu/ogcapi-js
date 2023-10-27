@@ -4,7 +4,7 @@
  * @param params
  */
 export async function request(options: IRequestOptions): Promise<any> {
-  const [url, init] = toRequestArgs(options);
+  const { url, init } = toRequestArgs(options);
   const res: Response = await fetch(url, init);
 
   if (!res.ok) {
@@ -69,31 +69,27 @@ const getRequestArgsMap: Record<TRequestMethods, TRequestArgsGetter> = {
       headers,
       method: 'GET',
     };
-    return [url, init];
+    return { url, init };
   },
-  POST: ({
-    url,
-    params = {},
-    headers = {}
-  }: IRequestOptions): TRequestArgs => {
+  POST: ({ url, params = {}, headers = {} }: IRequestOptions): TRequestArgs => {
     const init = {
       headers,
       method: 'POST',
       body: toBody(params, headers),
     };
-    return [url, init];
+    return { url, init };
   },
   DELETE: ({
     url: baseUrl,
     params = {},
-    headers = {}
+    headers = {},
   }: IRequestOptions): TRequestArgs => {
     const url = `${baseUrl}?${toSearchParams(params).toString()}`;
     const init = {
       headers,
       method: 'DELETE',
     };
-    return [url, init];
+    return { url, init };
   },
 };
 
@@ -104,11 +100,11 @@ const toRequestArgs = (params: IRequestOptions): TRequestArgs => {
   }
   const requestArgs = getRequestArgs(params);
   return requestArgs;
-}
+};
 
 type TRequestArgsGetter = (params: IRequestOptions) => TRequestArgs;
 
-type TRequestArgs = [string, RequestInit];
+type TRequestArgs = { url: string; init: RequestInit };
 
 export interface IRequestParams {
   [key: string]: any;
