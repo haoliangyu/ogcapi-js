@@ -88,3 +88,12 @@ test('e2e: executeJob() should execute job synchronously', async () => {
   expect(result.jobID).toBeTruthy();
 });
  */
+
+
+test('e2e: getJobs() should return a jobs list', async () => {
+  const service = new ProcessesService({ baseUrl: TEST_SITE });
+  const result = await service.getJobs();
+
+  expect(Array.isArray(result.jobs)).toBe(true);
+});
+
