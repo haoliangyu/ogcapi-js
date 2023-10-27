@@ -3,6 +3,7 @@ import {
   IDateRange,
   IRequestParams,
   TFilter,
+  TDateLike,
   TSortBy,
   request,
   IServiceRequestOptions,
@@ -24,6 +25,7 @@ import { JSONSchema7 } from 'json-schema';
 export {
   EFilterLang as FilterLang,
   IDateRange,
+  TDateLike,
   IJSONFilter,
   IRequestParams,
   ISortByItem,
@@ -253,7 +255,7 @@ export interface IGetFeaturesOptions extends IServiceRequestOptions {
   /**
    * feature datetime range
    */
-  datetime?: Date | IDateRange;
+  datetime?: TDateLike | IDateRange;
 
   /**
    * return CRS for the requested features
