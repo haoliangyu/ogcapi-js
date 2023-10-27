@@ -3,7 +3,7 @@ import fetchMock from 'fetch-mock';
 export function mockRequest(
   url: string,
   response: any,
-  options: any = {}
+  options: fetchMock.MockOptions = {}
 ): any {
   fetchMock.mock(
     {
