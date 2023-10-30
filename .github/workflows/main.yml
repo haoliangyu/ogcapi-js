@@ -9,6 +9,11 @@ on:
 jobs:
   main:
     runs-on: ubuntu-latest
+    services:
+      pygeoapi:
+        image: "ghcr.io/sebastianfrey/ogcapi-js:master"
+        ports:
+          - "5000:80"
     steps:
     - uses: actions/checkout@v3
     - name: setup node
