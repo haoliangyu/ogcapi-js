@@ -34,7 +34,7 @@ test('e2e: getProcess() should return a process', async () => {
   expect(process.title).toBeTruthy();
 });
 
-test('e2e: executeJob() should execute job synchronously', async () => {
+test('e2e: executeJob({ mode: sync }) should execute job synchronously', async () => {
   const service = new ProcessesService({ baseUrl: TEST_SITE });
   const result = await service.executeProcess('hello-world', {
     mode: 'sync',
@@ -54,7 +54,7 @@ test('e2e: executeJob() should execute job synchronously', async () => {
 });
 
 // TODO: check again when https://github.com/geopython/pygeoapi/discussions/1383#discussioncomment-7421781 is resolved
-/* test('e2e: executeJob() should execute job asynchronously', async () => {
+/* test('e2e: executeJob({ mode: async }) should execute job asynchronously', async () => {
   const service = new ProcessesService({ baseUrl: TEST_SITE });
   const result = await service.executeProcess('hello-world', {
     mode: 'async',
@@ -79,4 +79,18 @@ test('e2e: getJobs() should return a jobs list', async () => {
   const result = await service.getJobs();
 
   expect(Array.isArray(result.jobs)).toBe(true);
+  result.jobs.forEach(job => {
+    expect(job.processID).toBe('hello-world');
+    expect(job.status).toBe('successful');
+  });
+});
+
+test('e2e: getJob() should return a job', async () => {
+  const service = new ProcessesService({ baseUrl: TEST_SITE });
+  const result = await service.getJob('f78fa304-775f-11ee-88b4-0242ac110002');
+
+  expect(result).toBeDefined();
+  expect(result.processID).toBe('hello-world');
+  expect(result.status).toBe('successful');
+  expect(result.jobID).toBe('f78fa304-775f-11ee-88b4-0242ac110002');
 });
