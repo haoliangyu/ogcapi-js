@@ -3,6 +3,7 @@
 A lightweight and modular JavaScript library for [OGC APIs](https://ogcapi.ogc.org/) that implements:
 
 * [@ogcapi-js/features](./packages/features)
+* [@ogcapi-js/processes](./packages/processes)
 
 Compared to writing the request code yourself, this library provides:
 
