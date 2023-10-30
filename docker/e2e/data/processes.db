@@ -1,0 +1,1 @@
+{"_default": {"1": {"identifier": "f78fa304-775f-11ee-88b4-0242ac110002", "process_id": "hello-world", "job_start_datetime": "2023-10-30T20:07:35.404870Z", "job_end_datetime": "2023-10-30T20:07:35.408560Z", "status": "successful", "location": "/tmp/hello-world-f78fa304-775f-11ee-88b4-0242ac110002", "mimetype": "application/json", "message": "Job complete", "progress": 100}}}
