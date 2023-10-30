@@ -45,7 +45,7 @@ test('e2e: executeJob() should execute job synchronously', async () => {
   const result = await service.executeProcess('hello-world', {
     mode: 'sync',
     inputs: {
-      name: '@ogcapi-js'
+      name: '@ogcapi-js',
     },
     outputs: {
       echo: {
@@ -79,7 +79,6 @@ test('e2e: executeJob() should execute job synchronously', async () => {
 
   expect(result).toBeTruthy();
 }); */
-
 
 test('e2e: getJobs() should return a jobs list', async () => {
   const service = new ProcessesService({ baseUrl: TEST_SITE });
@@ -139,4 +138,3 @@ test('e2e: getJobs() should return a jobs list', async () => {
   expect(result.jobID).toBeTruthy();
 });
 */
-
