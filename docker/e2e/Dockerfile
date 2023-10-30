@@ -1,7 +1,7 @@
 FROM geopython/pygeoapi:0.15.0
 
-LABEL maintainer="https://github.com/haoliangyu/ogcapi-js" \
-    description="docker image for e2e tests"
+LABEL org.opencontainers.image.authors="Contributors of @ogcapi-js" \
+    org.opencontainers.image.description="docker image for e2e tests"
 
 # install curl for healthcheck
 RUN apt-get update && \
