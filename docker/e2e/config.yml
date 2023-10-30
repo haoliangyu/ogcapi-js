@@ -21,8 +21,8 @@ server:
         attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     manager:
         name: TinyDB
-        connection: /tmp/pygeoapi-process-manager.db
-        output_dir: /tmp/
+        connection: /pygeoapi/data/processes.db
+        output_dir: /pygeoapi/data/
 
 logging:
     level: ERROR
