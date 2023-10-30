@@ -1,6 +1,5 @@
+import 'isomorphic-fetch';
 import { FeatureService, ICollection } from '../../src/features';
-
-require('isomorphic-fetch');
 
 const TEST_SITE = 'https://demo.ldproxy.net/vineyards';
 
