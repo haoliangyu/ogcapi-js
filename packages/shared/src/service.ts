@@ -50,27 +50,41 @@ export interface IGetConformanceResponse {
 }
 
 export class Service {
-  protected _baseUrl: string;
+  private _baseUrl: string;
 
   /**
    * constructor
    */
   constructor(config: IServiceConfig) {
-    this._baseUrl = config.baseUrl;
+    this._baseUrl = this._parseBaseUrl(config.baseUrl);
   }
 
   /**
-   * Get a list of conformed standards
-   * @param options       options
+   * base url
+   */
+  get baseUrl(): string {
+    return this._baseUrl;
+  }
+
+  /**
+   * get a list of conformed standards
+   * @param options options
    */
   async getConformance(
     options: IServiceRequestOptions = {}
   ): Promise<IGetConformanceResponse> {
-    const url: string = `${this._baseUrl}/conformance`;
+    const url: string = `${this.baseUrl}/conformance`;
     const result: IGetConformanceResponse = await request({
       url,
       params: options.params,
     });
     return result;
+  }
+
+  private _parseBaseUrl(baseUrl: string): string {
+    if (baseUrl.endsWith('/')) {
+      baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf('/'));
+    }
+    return baseUrl;
   }
 }

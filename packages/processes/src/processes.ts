@@ -25,7 +25,7 @@ export class ProcessesService extends Service {
   async getProcesses(
     options: IGetProcessesRequest = {}
   ): Promise<IProcessesResponse> {
-    const url: string = `${this._baseUrl}/processes`;
+    const url: string = `${this.baseUrl}/processes`;
     const params: IRequestParams = Object.assign({}, options.params);
     if ('limit' in options) {
       params.limit = options.limit;
@@ -43,7 +43,7 @@ export class ProcessesService extends Service {
     processId: string,
     options: IServiceRequestOptions = {}
   ): Promise<IProcess> {
-    const url: string = `${this._baseUrl}/processes/${processId}`;
+    const url: string = `${this.baseUrl}/processes/${processId}`;
     const result: IProcess = await request({ url, params: options.params });
     return result;
   }
@@ -61,7 +61,7 @@ export class ProcessesService extends Service {
       throw new Error('"raw" response mode is not supported yet.');
     }
 
-    const url: string = `${this._baseUrl}/processes/${processId}/execution`;
+    const url: string = `${this.baseUrl}/processes/${processId}/execution`;
     const params: IRequestParams = Object.assign(
       {
         inputs: options.inputs,
@@ -86,7 +86,7 @@ export class ProcessesService extends Service {
    * @param options options
    */
   async getJobs(options: IGetJobsOptions = {}): Promise<IJobsResponse> {
-    const url: string = `${this._baseUrl}/jobs`;
+    const url: string = `${this.baseUrl}/jobs`;
     const params: IRequestParams = Object.assign({}, options.params);
     if ('limit' in options) {
       params.limit = options.limit;
@@ -110,7 +110,7 @@ export class ProcessesService extends Service {
     jobId: string,
     options: IServiceRequestOptions = {}
   ): Promise<IJobInfo> {
-    const url: string = `${this._baseUrl}/jobs/${jobId}`;
+    const url: string = `${this.baseUrl}/jobs/${jobId}`;
     const params: IRequestParams = Object.assign({}, options.params);
     const result: IJobInfo = await request({ url, params });
     return result;
@@ -128,7 +128,7 @@ export class ProcessesService extends Service {
     jobId: string,
     options: IServiceRequestOptions = {}
   ): Promise<TJobResult> {
-    const url: string = `${this._baseUrl}/jobs/${jobId}`;
+    const url: string = `${this.baseUrl}/jobs/${jobId}`;
     const params: IRequestParams = Object.assign({}, options.params);
     const result: TJobResult = await request({ url, params });
     return result;
@@ -143,7 +143,7 @@ export class ProcessesService extends Service {
     jobId: string,
     options: IServiceRequestOptions = {}
   ): Promise<IJobInfo> {
-    const url: string = `${this._baseUrl}/jobs/${jobId}`;
+    const url: string = `${this.baseUrl}/jobs/${jobId}`;
     const params: IRequestParams = Object.assign({}, options.params);
     const result: IJobInfo = await request({ url, params, method: 'DELETE' });
     return result;

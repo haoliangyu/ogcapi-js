@@ -51,7 +51,7 @@ export class FeatureService extends Service {
   async getCollections(
     options: IServiceRequestOptions = {}
   ): Promise<IGetCollectionsResponse> {
-    const url: string = `${this._baseUrl}/collections`;
+    const url: string = `${this.baseUrl}/collections`;
     const result: IGetCollectionsResponse = await request({
       url,
       params: options.params,
@@ -68,7 +68,7 @@ export class FeatureService extends Service {
     collectionId: string,
     options: IServiceRequestOptions = {}
   ): Promise<ICollection> {
-    const url: string = `${this._baseUrl}/collections/${collectionId}`;
+    const url: string = `${this.baseUrl}/collections/${collectionId}`;
     const result: ICollection = await request({ url, params: options.params });
     return result;
   }
@@ -82,7 +82,7 @@ export class FeatureService extends Service {
     collectionId: string,
     options: IServiceRequestOptions = {}
   ): Promise<IQueryables> {
-    const url: string = `${this._baseUrl}/collections/${collectionId}/queryables`;
+    const url: string = `${this.baseUrl}/collections/${collectionId}/queryables`;
     const result: IQueryables = await request({ url, params: options.params });
     return result;
   }
@@ -97,7 +97,7 @@ export class FeatureService extends Service {
     options: IGetFeaturesOptions = {}
   ): Promise<IGetFeaturesResponse> {
     const params = toGetFeaturesRequestParams(options);
-    const url: string = `${this._baseUrl}/collections/${collectionId}/items`;
+    const url: string = `${this.baseUrl}/collections/${collectionId}/items`;
     const result: IGetFeaturesResponse = await request({
       url,
       params,
@@ -115,7 +115,7 @@ export class FeatureService extends Service {
     options: IGetFeaturesOptions = {}
   ): Promise<IGetFeaturesResponse> {
     const params = toGetFeaturesRequestParams(options);
-    const url: string = `${this._baseUrl}/collections/${collectionId}/search`;
+    const url: string = `${this.baseUrl}/collections/${collectionId}/search`;
     const result: IGetFeaturesResponse = await request({
       url,
       params,
@@ -137,7 +137,7 @@ export class FeatureService extends Service {
     options: IGetFeatureOptions = {}
   ): Promise<IFeature> {
     const params = toGetFeatureRequestParams(options);
-    const url: string = `${this._baseUrl}/collections/${collectionId}/items/${featureId}`;
+    const url: string = `${this.baseUrl}/collections/${collectionId}/items/${featureId}`;
     const result: IFeature = await request({ url, params });
     return result;
   }
