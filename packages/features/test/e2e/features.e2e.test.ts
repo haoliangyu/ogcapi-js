@@ -1,7 +1,7 @@
 import 'isomorphic-fetch';
 import { FeatureService, ICollection } from '../../src/features';
 
-const TEST_SITE = 'https://demo.ldproxy.net/vineyards';
+const TEST_SITE = 'http://localhost:5000';
 
 test('e2e: getConformance() should return a conformance list', async () => {
   const service = new FeatureService({ baseUrl: TEST_SITE });
@@ -40,6 +40,8 @@ test('e2e: getQueryables() should return queryables for collection', async () =>
   expect(queryables.$id).toBe(`${TEST_SITE}/collections/vineyards/queryables`);
   expect(
     queryables.$schema === 'https://json-schema.org/draft/2019-09/schema' ||
+      queryables.$schema === 'http://json-schema.org/draft/2019-09/schema' ||
+      queryables.$schema === 'https://json-schema.org/draft-07/schema#' ||
       queryables.$schema === 'http://json-schema.org/draft-07/schema#'
   ).toBe(true);
 });
