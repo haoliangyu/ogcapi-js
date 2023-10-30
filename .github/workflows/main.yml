@@ -12,6 +12,11 @@ jobs:
     services:
       pygeoapi:
         image: "ghcr.io/haoliangyu/ogcapi-js:master"
+        options: >-
+          --health-cmd "curl http://localhost"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
         ports:
           - "5000:80"
     steps:
