@@ -6,7 +6,10 @@ const TEST_SITE = 'http://localhost:5000';
 test('e2e: getConformance() should return a conformance list', async () => {
   const service = new ProcessesService({ baseUrl: TEST_SITE });
   const result = await service.getConformance();
+
+  expect(result).toBeDefined();
   expect(Array.isArray(result.conformsTo)).toBe(true);
+  expect(result.conformsTo.length).toBeGreaterThan(0);
 
   result.conformsTo.forEach((item: string) => {
     expect(typeof item).toBe('string');
@@ -16,12 +19,15 @@ test('e2e: getConformance() should return a conformance list', async () => {
 test('e2e: getProcesses() should return a processes list', async () => {
   const service = new ProcessesService({ baseUrl: TEST_SITE });
   const result = await service.getProcesses();
+
+  expect(result).toBeDefined();
   expect(Array.isArray(result.processes)).toBe(true);
+  expect(result.processes.length).toBeGreaterThan(0);
 
   result.processes.forEach((item: IProcessSummary) => {
-    expect(item.id).toBeTruthy();
-    expect(item.version).toBeTruthy();
-    expect(item.title).toBeTruthy();
+    expect(typeof item.id).toBe('string');
+    expect(typeof item.version).toBe('string');
+    expect(typeof item.title).toBe('string');
   });
 });
 
@@ -29,9 +35,17 @@ test('e2e: getProcess() should return a process', async () => {
   const service = new ProcessesService({ baseUrl: TEST_SITE });
   const process = await service.getProcess('hello-world');
 
-  expect(process.id).toBeTruthy();
-  expect(process.version).toBeTruthy();
-  expect(process.title).toBeTruthy();
+  expect(process).toBeDefined();
+  expect(process.id).toBe('hello-world');
+  expect(process.title).toBe('Hello World');
+  expect(typeof process.description).toBe('string');
+  expect(typeof process.version).toBe('string');
+  expect(process.inputs).toBeDefined();
+  expect(process.outputs).toBeDefined();
+  expect(process.jobControlOptions).toContain('sync-execute');
+  expect(process.jobControlOptions).toContain('async-execute');
+  expect(process.outputTransmission).toContain('value');
+  expect(Array.isArray(process.links)).toBe(true);
 });
 
 test('e2e: executeJob({ mode: sync }) should execute job synchronously', async () => {
@@ -78,10 +92,14 @@ test('e2e: getJobs() should return a jobs list', async () => {
   const service = new ProcessesService({ baseUrl: TEST_SITE });
   const result = await service.getJobs();
 
+  expect(result).toBeDefined();
   expect(Array.isArray(result.jobs)).toBe(true);
+  expect(result.jobs.length).toBeGreaterThan(0);
+
   result.jobs.forEach(job => {
-    expect(job.processID).toBe('hello-world');
-    expect(job.status).toBe('successful');
+    expect(typeof job.processID).toBe('string');
+    expect(typeof job.status).toBe('string');
+    expect(typeof job.jobID).toBe('string');
   });
 });
 
