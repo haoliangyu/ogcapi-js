@@ -10,7 +10,7 @@
     "test:e2e": "lerna run test:e2e",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint:fix",
-    "publish": "npm run lint && npm run test && lerna run build && lerna publish"
+    "publish": "npm run lint && npm run build && npm run test && lerna publish"
   },
   "husky": {
     "hooks": {
