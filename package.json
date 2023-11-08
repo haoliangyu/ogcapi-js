@@ -14,7 +14,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lerna run lint:staged && lerna run test:unit"
+      "pre-commit": "lerna run lint:staged && lerna run build && lerna run test:unit"
     }
   },
   "prettier": {
