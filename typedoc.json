@@ -7,7 +7,6 @@
   ],
   "exclude": [
     "packages/**/test/**/*.ts",
-    "packages/processes",
     "packages/test-utils"
   ],
   "excludeExternals": false,

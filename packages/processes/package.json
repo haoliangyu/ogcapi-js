@@ -46,5 +46,8 @@
   "lint-staged": {
     "*.js": "tsdx lint --fix"
   },
-  "gitHead": "0facd017e222e1d4f58755b8e6e71895a929b5dc"
+  "gitHead": "0facd017e222e1d4f58755b8e6e71895a929b5dc",
+  "publishConfig": {
+    "access": "public"
+  }
 }
