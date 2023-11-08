@@ -3,23 +3,17 @@
  * @param url
  * @param params
  */
-export async function request({
-  url,
-  headers = {},
-  params = {},
-  method = 'GET',
-}: IRequestOptions): Promise<any> {
-  const isGet = method === 'GET';
-  const fetchUrl = isGet ? `${url}?${toSearchParams(params).toString()}` : url;
-  const body = !isGet ? toBody(params, headers) : undefined;
-  const res: Response = await fetch(fetchUrl, {
-    method,
-    body,
-    headers,
-  });
+export async function request(options: IRequestOptions): Promise<any> {
+  const { url, init } = toRequestArgs(options);
+  const res: Response = await fetch(url, init);
 
   if (!res.ok) {
     throw new Error(res.statusText);
+  }
+
+  // no content
+  if (res.status === 204) {
+    return;
   }
 
   return res.json();
@@ -63,6 +57,55 @@ function toSearchParams(params: IRequestParams) {
 function toJSON(params: IRequestParams) {
   return JSON.stringify(params);
 }
+
+const getRequestArgsMap: Record<TRequestMethods, TRequestArgsGetter> = {
+  GET: ({
+    url: baseUrl,
+    headers = {},
+    params = {},
+  }: IRequestOptions): TRequestArgs => {
+    const url = `${baseUrl}?${toSearchParams(params).toString()}`;
+    const init = {
+      headers,
+      method: 'GET',
+    };
+    return { url, init };
+  },
+  POST: ({ url, params = {}, headers = {} }: IRequestOptions): TRequestArgs => {
+    const init = {
+      headers,
+      method: 'POST',
+      body: toBody(params, headers),
+    };
+    return { url, init };
+  },
+  DELETE: ({
+    url: baseUrl,
+    params = {},
+    headers = {},
+  }: IRequestOptions): TRequestArgs => {
+    const url = `${baseUrl}?${toSearchParams(params).toString()}`;
+    const init = {
+      headers,
+      method: 'DELETE',
+    };
+    return { url, init };
+  },
+};
+
+const toRequestArgs = (params: IRequestOptions): TRequestArgs => {
+  const getRequestArgs = getRequestArgsMap[params.method ?? 'GET'];
+  if (!getRequestArgs) {
+    throw new Error(`Unsupported HTTP method "${params.method}"`);
+  }
+  const requestArgs = getRequestArgs(params);
+  return requestArgs;
+};
+
+type TRequestArgsGetter = (params: IRequestOptions) => TRequestArgs;
+
+type TRequestArgs = { url: string; init: RequestInit };
+
 export interface IRequestParams {
   [key: string]: any;
 }
@@ -71,9 +114,11 @@ export interface IRequestHeaders {
   [key: string]: any;
 }
 
+export type TRequestMethods = 'GET' | 'POST' | 'DELETE';
+
 export interface IRequestOptions {
   url: string;
   params?: IRequestParams;
   headers?: IRequestHeaders;
-  method?: 'GET' | 'POST';
+  method?: TRequestMethods;
 }

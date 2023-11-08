@@ -9,6 +9,16 @@ on:
 jobs:
   main:
     runs-on: ubuntu-latest
+    services:
+      pygeoapi:
+        image: "ghcr.io/haoliangyu/ogcapi-js:master"
+        options: >-
+          --health-cmd "curl http://localhost"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - "5000:80"
     steps:
     - uses: actions/checkout@v3
     - name: setup node
@@ -25,7 +35,6 @@ jobs:
     - name: Unit test
       run: npm test
     - name: E2E test
-      if: ${{ github.ref_name == 'master' }}
       run: npm run test:e2e
     - name: Build doc
       if: ${{ github.ref_name == 'master' }}

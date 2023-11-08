@@ -27,10 +27,10 @@ This library uses the global [fetch](https://fetch.spec.whatwg.org/) function fo
 ``` javascript
 require('isomorphic-fetch');
 
-const { Service } = require('@ogcapi-js/features');
+const { FeatureService } = require('@ogcapi-js/features');
 
 // create a new service client
-const service = new Service({
+const service = new FeatureService({
   baseUrl: 'https://ogcapi.service.com'
 });
 
@@ -46,7 +46,7 @@ Modern browsers already support the global `fetch` function so there is no need 
 import { Service } from `@ogcapi-js/features`;
 
 // create a new service client
-const service = new Service({
+const service = new FeatureService({
   baseUrl: 'https://ogcapi.service.com'
 });
 
