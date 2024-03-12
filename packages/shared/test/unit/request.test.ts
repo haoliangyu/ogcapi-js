@@ -147,3 +147,17 @@ test('request() should not read body of DELETE request when response status is 2
   });
   expect(result).toBeUndefined();
 });
+
+test('request() should throw AbortError when signal is aborted', async () => {
+  mockRequest('https://www.example.com?f=json', {
+    success: true,
+  });
+
+  const controller = new AbortController();
+  controller.abort();
+
+  expect(async () => await request({
+    url: 'https://www.example.com',
+    signal: controller.signal
+  })).rejects.toThrow(/abort/i);
+});
