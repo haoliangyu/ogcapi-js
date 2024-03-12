@@ -44,7 +44,11 @@ export class ProcessesService extends Service {
     options: IServiceRequestOptions = {}
   ): Promise<IProcess> {
     const url: string = `${this.baseUrl}/processes/${processId}`;
-    const result: IProcess = await request({ url, params: options.params });
+    const result: IProcess = await request({
+      url,
+      signal: options.signal,
+      params: options.params,
+    });
     return result;
   }
 
@@ -77,7 +81,13 @@ export class ProcessesService extends Service {
       headers['prefer'] = 'respond-async';
     }
 
-    const result = await request({ url, headers, params, method: 'POST' });
+    const result = await request({
+      url,
+      headers,
+      params,
+      signal: options.signal,
+      method: 'POST',
+    });
     return result as TExecuteProcessResponse<T>;
   }
 
@@ -97,7 +107,11 @@ export class ProcessesService extends Service {
     if (options.datetime) {
       params.datetime = stringifyDatetime(options.datetime);
     }
-    const result: IJobsResponse = await request({ url, params });
+    const result: IJobsResponse = await request({
+      url,
+      params,
+      signal: options.signal,
+    });
     return result;
   }
 
@@ -112,7 +126,11 @@ export class ProcessesService extends Service {
   ): Promise<IJobInfo> {
     const url: string = `${this.baseUrl}/jobs/${jobId}`;
     const params: IRequestParams = Object.assign({}, options.params);
-    const result: IJobInfo = await request({ url, params });
+    const result: IJobInfo = await request({
+      url,
+      params,
+      signal: options.signal,
+    });
     return result;
   }
 
@@ -130,7 +148,11 @@ export class ProcessesService extends Service {
   ): Promise<TJobResult> {
     const url: string = `${this.baseUrl}/jobs/${jobId}`;
     const params: IRequestParams = Object.assign({}, options.params);
-    const result: TJobResult = await request({ url, params });
+    const result: TJobResult = await request({
+      url,
+      params,
+      signal: options.signal,
+    });
     return result;
   }
 
@@ -145,7 +167,12 @@ export class ProcessesService extends Service {
   ): Promise<IJobInfo> {
     const url: string = `${this.baseUrl}/jobs/${jobId}`;
     const params: IRequestParams = Object.assign({}, options.params);
-    const result: IJobInfo = await request({ url, params, method: 'DELETE' });
+    const result: IJobInfo = await request({
+      url,
+      params,
+      signal: options.signal,
+      method: 'DELETE',
+    });
     return result;
   }
 }

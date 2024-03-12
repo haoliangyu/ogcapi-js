@@ -61,18 +61,26 @@ function toJSON(params: IRequestParams) {
 const getRequestArgsMap: Record<TRequestMethods, TRequestArgsGetter> = {
   GET: ({
     url: baseUrl,
+    signal,
     headers = {},
     params = {},
   }: IRequestOptions): TRequestArgs => {
     const url = `${baseUrl}?${toSearchParams(params).toString()}`;
     const init = {
+      signal,
       headers,
       method: 'GET',
     };
     return { url, init };
   },
-  POST: ({ url, params = {}, headers = {} }: IRequestOptions): TRequestArgs => {
+  POST: ({
+    url,
+    signal,
+    params = {},
+    headers = {},
+  }: IRequestOptions): TRequestArgs => {
     const init = {
+      signal,
       headers,
       method: 'POST',
       body: toBody(params, headers),
@@ -81,11 +89,13 @@ const getRequestArgsMap: Record<TRequestMethods, TRequestArgsGetter> = {
   },
   DELETE: ({
     url: baseUrl,
+    signal,
     params = {},
     headers = {},
   }: IRequestOptions): TRequestArgs => {
     const url = `${baseUrl}?${toSearchParams(params).toString()}`;
     const init = {
+      signal,
       headers,
       method: 'DELETE',
     };
@@ -121,4 +131,5 @@ export interface IRequestOptions {
   params?: IRequestParams;
   headers?: IRequestHeaders;
   method?: TRequestMethods;
+  signal?: AbortSignal;
 }
