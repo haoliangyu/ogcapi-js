@@ -156,8 +156,11 @@ test('request() should throw AbortError when signal is aborted', async () => {
   const controller = new AbortController();
   controller.abort();
 
-  expect(async () => await request({
-    url: 'https://www.example.com',
-    signal: controller.signal
-  })).rejects.toThrow(/abort/i);
+  expect(
+    async () =>
+      await request({
+        url: 'https://www.example.com',
+        signal: controller.signal,
+      })
+  ).rejects.toThrow(/abort/i);
 });

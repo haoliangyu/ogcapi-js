@@ -73,7 +73,12 @@ const getRequestArgsMap: Record<TRequestMethods, TRequestArgsGetter> = {
     };
     return { url, init };
   },
-  POST: ({ url, signal, params = {}, headers = {} }: IRequestOptions): TRequestArgs => {
+  POST: ({
+    url,
+    signal,
+    params = {},
+    headers = {},
+  }: IRequestOptions): TRequestArgs => {
     const init = {
       signal,
       headers,
