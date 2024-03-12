@@ -34,6 +34,10 @@ export interface IServiceConfig {
  */
 export interface IServiceRequestOptions {
   /**
+   * abort signal passed to fetch.
+   */
+  signal?: AbortSignal;
+  /**
    * additional request parameters
    */
   params?: IRequestParams;

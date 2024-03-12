@@ -55,6 +55,7 @@ export class FeatureService extends Service {
     const result: IGetCollectionsResponse = await request({
       url,
       params: options.params,
+      signal: options.signal,
     });
     return result;
   }
@@ -69,7 +70,7 @@ export class FeatureService extends Service {
     options: IServiceRequestOptions = {}
   ): Promise<ICollection> {
     const url: string = `${this.baseUrl}/collections/${collectionId}`;
-    const result: ICollection = await request({ url, params: options.params });
+    const result: ICollection = await request({ url, params: options.params, signal: options.signal });
     return result;
   }
 
@@ -83,7 +84,7 @@ export class FeatureService extends Service {
     options: IServiceRequestOptions = {}
   ): Promise<IQueryables> {
     const url: string = `${this.baseUrl}/collections/${collectionId}/queryables`;
-    const result: IQueryables = await request({ url, params: options.params });
+    const result: IQueryables = await request({ url, params: options.params, signal: options.signal });
     return result;
   }
 
@@ -101,6 +102,7 @@ export class FeatureService extends Service {
     const result: IGetFeaturesResponse = await request({
       url,
       params,
+      signal: options.signal,
     });
     return result;
   }
@@ -119,6 +121,7 @@ export class FeatureService extends Service {
     const result: IGetFeaturesResponse = await request({
       url,
       params,
+      signal: options.signal,
       method: 'POST',
       headers: { 'content-type': 'application/json' },
     });
@@ -138,7 +141,7 @@ export class FeatureService extends Service {
   ): Promise<IFeature> {
     const params = toGetFeatureRequestParams(options);
     const url: string = `${this.baseUrl}/collections/${collectionId}/items/${featureId}`;
-    const result: IFeature = await request({ url, params });
+    const result: IFeature = await request({ url, params, signal: options.signal });
     return result;
   }
 }
