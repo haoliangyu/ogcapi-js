@@ -5,27 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.1.0 - 2024-03-17
+
+### Added
+* ([shared](./packages/shared/)) Support passing an AbortSignal to a request ([#59](https://github.com/haoliangyu/ogcapi-js/pull/59))
+
 ## 1.0.0 - 2023-11-07
 
 ### Added
-* ([processes](./packages/processes/)) Initial release
- ([#51](https://github.com/haoliangyu/ogcapi-js/pull/51))
+* ([processes](./packages/processes/)) Initial release ([#51](https://github.com/haoliangyu/ogcapi-js/pull/51))
 
 ### Changed
-* **breaking** ([features](./packages/features/)) Change service class name from `Service` to `FeatureService`
- ([#51](https://github.com/haoliangyu/ogcapi-js/pull/51))
+* **breaking** ([features](./packages/features/)) Change service class name from `Service` to `FeatureService` ([#51](https://github.com/haoliangyu/ogcapi-js/pull/51))
 
 ## 0.5.0 - 2023-09-23
 
 ### Added
-* ([features](./packages/features/)) Support requirement class `Search`` from OGC API - Features Part 5 proposal
- ([#49](https://github.com/haoliangyu/ogcapi-js/pull/49))
+* ([features](./packages/features/)) Support requirement class `Search`` from OGC API - Features Part 5 proposal ([#49](https://github.com/haoliangyu/ogcapi-js/pull/49))
 
 ### Fixed
 
 ### Changed
-* ([shared](./packages/shared/)) `request` method now accpets an object to support more request options
- ([#49](https://github.com/haoliangyu/ogcapi-js/pull/49))
+* ([shared](./packages/shared/)) `request` method now accpets an object to support more request options ([#49](https://github.com/haoliangyu/ogcapi-js/pull/49))
 
 ## 0.4.1 - 2022-11-28
 
