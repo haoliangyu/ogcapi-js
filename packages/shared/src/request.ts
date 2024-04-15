@@ -47,7 +47,9 @@ function getContentType(headers: IRequestHeaders): string {
 
 function toSearchParams(params: IRequestParams) {
   const searchParams = new URLSearchParams();
-  searchParams.append('f', 'json');
+  if (!('f' in params)) {
+    searchParams.append('f', 'json');
+  }
   for (const key in params) {
     searchParams.append(key, params[key].toString());
   }
