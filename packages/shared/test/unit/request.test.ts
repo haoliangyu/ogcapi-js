@@ -164,3 +164,15 @@ test('request() should throw AbortError when signal is aborted', async () => {
       })
   ).rejects.toThrow(/abort/i);
 });
+
+test('request() should only append f=json when f param is not present', async () => {
+  mockRequest('https://www.example.com?f=geojson', {
+    success: true,
+  });
+
+  const result = await request({
+    url: 'https://www.example.com',
+    params: { f: 'geojson' },
+  });
+  expect(result.success).toBe(true);
+});
