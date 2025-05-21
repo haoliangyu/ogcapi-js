@@ -18,7 +18,11 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+      "@ogcapi-js/shared": ["packages/shared/src"]
+    }
   },
   "exclude": [
     "node_modules",
