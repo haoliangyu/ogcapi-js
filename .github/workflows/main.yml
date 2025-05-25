@@ -38,3 +38,16 @@ jobs:
       run: npm run test:e2e
     - name: Build doc
       run: npm run build:doc
+
+  automerge-dependabot-pr:
+    if: ${{ github.event_name == 'pull_request' }}
+    needs:
+      - main
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v3
+        with:
+          target: minor
