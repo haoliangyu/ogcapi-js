@@ -1,6 +1,6 @@
 {
   "name": "@ogcapi-js/processes",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A javascript library for OGC API - Processes",
   "author": "Haoliang Yu <haoliang.yu@outlook.com>",
   "contributors": [],
@@ -32,7 +32,7 @@
     "url": "https://github.com/haoliangyu/ogcapi-js/issues"
   },
   "dependencies": {
-    "@ogcapi-js/shared": "^1.2.1"
+    "@ogcapi-js/shared": "^1.2.2"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",

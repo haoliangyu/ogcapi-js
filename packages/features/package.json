@@ -1,6 +1,6 @@
 {
   "name": "@ogcapi-js/features",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A javascript library for OGC API - Features",
   "author": "Haoliang Yu <haoliang.yu@outlook.com>",
   "homepage": "https://github.com/haoliangyu/ogcapi-js#readme",
@@ -31,7 +31,7 @@
     "url": "https://github.com/haoliangyu/ogcapi-js/issues"
   },
   "dependencies": {
-    "@ogcapi-js/shared": "^1.2.1"
+    "@ogcapi-js/shared": "^1.2.2"
   },
   "devDependencies": {
     "@ogcapi-js/test-utils": "^1.2.1",
