@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2018",
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
@@ -18,11 +18,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "baseUrl": "./",
-    "paths": {
-      "@ogcapi-js/shared": ["packages/shared/src"]
-    }
+    "esModuleInterop": true
   },
   "exclude": [
     "node_modules",
