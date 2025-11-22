@@ -26,20 +26,32 @@ This library uses the global [fetch](https://fetch.spec.whatwg.org/) function fo
 const { RecordsService } = require('@ogcapi-js/records');
 
 // create a new service client
-const service = new RecordsService({
-  baseUrl: 'https://ogcapi.service.com'
-});
+const service = new RecordsService({ baseUrl: 'https://ogcapi.service.com' });
 
+// list collections
+const collections = await service.collections();
+
+console.log(collections);
 ```
 
 ### Browser
 
 ``` javascript
-import { RecordsService } from `@ogcapi-js/records`;
+import { RecordsService } from '@ogcapi-js/records';
 
 // create a new service client
-const service = new RecordsService({
-  baseUrl: 'https://ogcapi.service.com'
-});
+const service = new RecordsService({ baseUrl: 'https://ogcapi.service.com' });
+
+// example: get collection items
+async function showItems() {
+  try {
+    const items = await service.items('my-collection', { limit: 10 });
+    console.log(items);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+showItems();
 
 ```
