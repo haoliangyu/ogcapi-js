@@ -1,4 +1,5 @@
 # @ogcapi-js/records — Development Specification (Core)
+
 Version: 0.1.0-alpha
 Location: `packages/records/specs/development-spec-core.md`
 Author: Haoliang Yu
@@ -19,6 +20,7 @@ This document also serves as the foundation for GitHub Copilot Agent automation 
 ## 2. Goals & Scope
 
 ### Goals
+
 - Implement Records API Part 1 (Core) using the same structure and patterns as other `ogcapi-js` packages.
 - Provide a typed, ergonomic client for Records endpoints.
 - Reuse existing shared utilities (`@ogcapi-js/shared`) for request handling, parameter encoding, errors, pagination, and filtering.
@@ -26,8 +28,10 @@ This document also serves as the foundation for GitHub Copilot Agent automation 
 - Provide robust TypeScript models for Records, Catalogs, Items, and Lists.
 - Enable both Node.js and browser usage.
 - Integrate build, test, and release workflows via existing monorepo automation.
+- All files should be named using
 
 ### In Scope
+
 - Endpoints:
   - `/`
   - `/api`
@@ -63,6 +67,7 @@ This document also serves as the foundation for GitHub Copilot Agent automation 
 - JSON encoding (initial)
 
 ### Out of Scope (Initial Version)
+
 - CRUD operations (Records Part 3)
 - Facets or advanced filtering (Records Part 2)
 - Non-JSON encodings (e.g., XML)
