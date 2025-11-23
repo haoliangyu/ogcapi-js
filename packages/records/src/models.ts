@@ -39,3 +39,28 @@ export interface IList<T> {
     found?: number;
   };
 }
+
+// Facets models (Part 2)
+export type FacetType = 'term' | 'histogram' | 'filter';
+
+export interface IFacetDefinition {
+  name: string;
+  type: FacetType;
+  property: string;
+  description?: string;
+  // additional fields like sortedBy, minOccurs
+}
+
+export interface IFacetBucket {
+  key?: string | number;
+  count: number;
+  min?: number;
+  max?: number;
+}
+
+export interface IFacetsResult {
+  facets?: Record<
+    string,
+    { definition: IFacetDefinition; buckets: IFacetBucket[] }
+  >;
+}

@@ -43,4 +43,29 @@ describe('RecordsService (integration)', () => {
     );
     expect(res.id).toBe('r1');
   });
+
+  it('facetDefinitions() should call /collections/{id}/facets', async () => {
+    (request as any).mockResolvedValueOnce({
+      facets: [{ name: 'f1', type: 'term', property: 'prop' }],
+    });
+    const svc = new RecordsService({ baseUrl: 'https://api.example.com' });
+    const res = await svc.facetDefinitions('col');
+    expect((request as any).mock.calls[0][0].url).toBe(
+      'https://api.example.com/collections/col/facets'
+    );
+    expect(res.facets?.length).toBe(1);
+  });
+
+  it('items() should encode facets param when object provided', async () => {
+    (request as any).mockResolvedValueOnce({ items: [] });
+    const svc = new RecordsService({ baseUrl: 'https://api.example.com' });
+    await svc.items('col', {
+      facets: { myFacet: { type: 'term', property: 'prop' } },
+      limit: 5,
+    });
+    const called = (request as any).mock.calls[0][0];
+    expect(called.url).toBe('https://api.example.com/collections/col/items');
+    expect(called.params.facets).toBe('myFacet:term(prop)');
+    expect(called.params.limit).toBe(5);
+  });
 });
