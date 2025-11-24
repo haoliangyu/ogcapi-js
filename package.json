@@ -31,6 +31,9 @@
     "typedoc": "^0.28.14",
     "typescript": "^5.9.3"
   },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
+  },
   "workspaces": [
     "./packages/*"
   ],
