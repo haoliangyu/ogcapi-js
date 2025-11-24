@@ -23,9 +23,9 @@
     "test": "npm run test:unit",
     "test:e2e": "tsdx test test/e2e",
     "test:unit": "tsdx test test/unit",
-    "lint": "tsdx lint",
-    "lint:fix": "tsdx lint --fix",
-    "lint:staged": "lint-staged"
+    "lint": "pretty-quick --check",
+    "lint:fix": "pretty-quick",
+    "lint:staged": "pretty-quick --staged"
   },
   "bugs": {
     "url": "https://github.com/haoliangyu/ogcapi-js/issues"
@@ -40,8 +40,7 @@
     "@types/json-schema": "^7.0.15",
     "@types/node": "^24.10.1",
     "isomorphic-fetch": "^3.0.0",
-    "lint-staged": "^16.2.7",
-    "tsdx": "^0.14.1",
+    "pretty-quick": "^4.2.2",
     "tslib": "^2.8.1",
     "typescript": "^5.9.3"
   },

@@ -27,6 +27,7 @@
     "lerna": "^9.0.1",
     "npm-check-updates": "^19.1.2",
     "open-cli": "^8.0.0",
+    "pretty-quick": "^4.2.2",
     "typedoc": "^0.28.14",
     "typescript": "^5.9.3"
   },
