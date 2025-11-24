@@ -5,17 +5,13 @@
     "ncu": "node scripts/ncu.js",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "build:doc": "typedoc && open-cli doc/index.html",
+    "build:doc": "typedoc --readme ./README.md && open-cli doc/index.html",
     "test": "lerna run test",
     "test:e2e": "lerna run test:e2e",
     "lint": "lerna run lint",
     "lint:fix": "lerna run lint:fix",
-    "publish": "npm run lint && npm run build && npm run test && lerna publish"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lerna run lint:staged && lerna run build && lerna run test:unit"
-    }
+    "publish": "npm run lint && npm run build && npm run test && lerna publish",
+    "prepare": "husky"
   },
   "prettier": {
     "printWidth": 80,
@@ -27,12 +23,16 @@
   "author": "Haoliang Yu",
   "devDependencies": {
     "@lerna/version": "^6.4.1",
-    "husky": "^4.3.8",
-    "lerna": "^6.4.1",
-    "npm-check-updates": "^16.4.3",
-    "open-cli": "^7.0.1",
-    "typedoc": "^0.24.1",
-    "typescript": "^4.1.3"
+    "husky": "^9.1.7",
+    "lerna": "^9.0.1",
+    "npm-check-updates": "^19.1.2",
+    "open-cli": "^8.0.0",
+    "pretty-quick": "^4.2.2",
+    "typedoc": "^0.28.14",
+    "typescript": "^5.9.3"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
   },
   "workspaces": [
     "./packages/*"

@@ -1,0 +1,1 @@
+lerna run lint:staged && lerna run build && lerna run test:unit

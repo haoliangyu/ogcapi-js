@@ -2,15 +2,16 @@
 
 A lightweight and modular JavaScript library for [OGC APIs](https://ogcapi.ogc.org/) that implements:
 
-* [@ogcapi-js/features](./packages/features)
-* [@ogcapi-js/processes](./packages/processes)
+- [@ogcapi-js/features](./packages/features)
+- [@ogcapi-js/processes](./packages/processes)
+- [@ogcapi-js/records](./packages/records)
 
 Compared to writing the request code yourself, this library provides:
 
-* More developer-friendly APIs
-* Better request error handling
-* Query parameter validation
-* TypeScript support
+- Developer-friendly APIs for automation and integration
+- Better request error handling
+- Query parameter validation
+- TypeScript support
 
 See more details at the [documentation](https://haoliangyu.github.io/ogcapi-js).
 
