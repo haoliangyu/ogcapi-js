@@ -2,6 +2,18 @@
   "name": "@ogcapi-js/records",
   "version": "1.3.0",
   "description": "OGC API - Records client",
+  "keywords": [
+    "ogcapi",
+    "ogcapi-records",
+    "records",
+    "catalog",
+    "metadata",
+    "geospatial",
+    "client",
+    "javascript",
+    "typescript",
+    "ogcapi-js"
+  ],
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",

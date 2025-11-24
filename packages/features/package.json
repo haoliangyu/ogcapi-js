@@ -2,6 +2,17 @@
   "name": "@ogcapi-js/features",
   "version": "1.3.0",
   "description": "A javascript library for OGC API - Features",
+  "keywords": [
+    "ogcapi",
+    "ogcapi-features",
+    "features",
+    "geojson",
+    "geospatial",
+    "client",
+    "javascript",
+    "typescript",
+    "ogcapi-js"
+  ],
   "author": "Haoliang Yu <haoliang.yu@outlook.com>",
   "homepage": "https://github.com/haoliangyu/ogcapi-js#readme",
   "license": "MIT",

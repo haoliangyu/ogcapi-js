@@ -21,6 +21,15 @@
   },
   "name": "ogcapi-js",
   "author": "Haoliang Yu",
+  "keywords": [
+    "ogcapi",
+    "ogcapi-js",
+    "opengeospatial",
+    "geospatial",
+    "client",
+    "javascript",
+    "typescript"
+  ],
   "devDependencies": {
     "@lerna/version": "^6.4.1",
     "husky": "^9.1.7",

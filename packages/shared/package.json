@@ -2,6 +2,16 @@
   "name": "@ogcapi-js/shared",
   "version": "1.3.0",
   "description": "A shared javascript library used by ogcapi-js packages",
+  "keywords": [
+    "ogcapi",
+    "shared",
+    "utils",
+    "http",
+    "client",
+    "typescript",
+    "javascript",
+    "ogcapi-js"
+  ],
   "author": "Haoliang Yu <haoliang.yu@outlook.com>",
   "contributors": [],
   "homepage": "https://github.com/haoliangyu/ogcapi-js#readme",

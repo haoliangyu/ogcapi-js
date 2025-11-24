@@ -2,6 +2,17 @@
   "name": "@ogcapi-js/processes",
   "version": "1.3.0",
   "description": "A javascript library for OGC API - Processes",
+  "keywords": [
+    "ogcapi",
+    "ogcapi-processes",
+    "processes",
+    "wps",
+    "geospatial",
+    "client",
+    "javascript",
+    "typescript",
+    "ogcapi-js"
+  ],
   "author": "Haoliang Yu <haoliang.yu@outlook.com>",
   "contributors": [],
   "homepage": "https://github.com/haoliangyu/ogcapi-js#readme",
