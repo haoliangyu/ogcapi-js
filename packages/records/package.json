@@ -24,5 +24,9 @@
     "pretty-quick": "^4.2.2",
     "typescript": "^4.9.5",
     "vitest": "^4.0.13"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "b3e014ed21f3b9183a30ca570a8bbe47bbe03667"
 }
