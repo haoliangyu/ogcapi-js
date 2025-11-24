@@ -5,7 +5,7 @@
     "ncu": "node scripts/ncu.js",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "build:doc": "typedoc && open-cli doc/index.html",
+    "build:doc": "typedoc --readme ./README.md && open-cli doc/index.html",
     "test": "lerna run test",
     "test:e2e": "lerna run test:e2e",
     "lint": "lerna run lint",

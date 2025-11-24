@@ -40,8 +40,5 @@
     "tslib": "^2.1.0",
     "typescript": "^4.1.3"
   },
-  "lint-staged": {
-    "*.js": "tsdx lint --fix"
-  },
   "gitHead": "18c0d1ea639e51a378ef829b8ad4e54aef6fc9b9"
 }
